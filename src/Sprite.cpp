@@ -3,11 +3,14 @@
 
 using namespace std;
 
-namespace SpriteGame{
+//namespace SpriteGame{
 
-Sprite::Sprite(int x, int y, int w, int h): Sprite  (x, y, w, h){}
+Sprite::Sprite(int x, int y, int w, int h): rect{x, y, w, h}{
+    
+}
 
-void Sprite::move(int x, int y){
+/*void Sprite::move(int x, int y){
  cout << "Spritens funktion move" << endl;
 }
-}
+*/
+//}

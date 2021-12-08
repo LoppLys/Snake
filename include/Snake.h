@@ -4,7 +4,7 @@
 #include "Sprite.h"
 #include <SDL2/SDL.h>
 
-namespace SpriteGame {
+//namespace SpriteGame {
 
 class Snake : public Sprite {
 public:
@@ -12,8 +12,9 @@ void keyUp(int x, int y);
 void keyDown(int x, int y);
 void keyLeft(int x, int y);
 void keyRight(int x, int y);
-Snake(int x, int y, int w, int h) : Sprite  (x, y, w, h){}
+Snake(int x, int y, int w, int h); //://Sprite  (x, y, w, h){}
 SDL_Surface* snake_head;
+SDL_Surface* getSurface(){return snake_head;}
 
 private:
 
@@ -21,6 +22,6 @@ private:
 
 };
 
-}
+//}
 
 //#endif

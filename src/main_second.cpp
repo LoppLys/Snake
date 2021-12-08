@@ -12,6 +12,7 @@
 #include <SDL2/SDL_image.h> 
 #include <SDL2/SDL_mixer.h> 
 #include <SDL2/SDL_ttf.h>
+#include "Snake.h"
 
 // Paths to resource folders. Change to your own path!
 // Absolut Path(Second choice)
@@ -40,10 +41,13 @@ int main(int argc, char* argv[]) {
 	SDL_Window* window 		= SDL_CreateWindow("Window", 100, 100, 800, 600, 0);
 	SDL_Renderer* renderer 	= SDL_CreateRenderer(window, -1, 0);
 
-	SDL_Surface* bg_sur = IMG_Load( (resPath + "images/bg.jpg").c_str() );
+	/*SDL_Surface* bg_sur = IMG_Load( (resPath + "images/bg.jpg").c_str() );*/
+	Snake* snake = new Snake(10, 10, 10, 10);
 
-	SDL_Texture* bg_tex = SDL_CreateTextureFromSurface(renderer, bg_sur);
-	SDL_FreeSurface(bg_sur);
+	//TODO gör bilden mindre!
+	SDL_Texture* bg_tex = SDL_CreateTextureFromSurface(renderer, snake->getSurface());
+	
+	SDL_FreeSurface(snake->getSurface());
 
 	std::cout << "Avsluta programmet genom \"quit\" från fönstrets meny eller genom att stänga fönstret!" << std::endl;
 
