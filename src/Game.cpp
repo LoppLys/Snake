@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <SDL2/SDL.h>
-#include "System.h"
 
 namespace SpriteGame {
 
@@ -33,11 +32,11 @@ namespace SpriteGame {
 					break;
 				} // switch
 			} // inre while
-			SDL_SetRenderDrawColor(system.get_ren(), 255, 255, 255, 255);
-			SDL_RenderClear(system.get_ren());
+			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
+			SDL_RenderClear(sys.get_ren());
 			for (Sprite* c : sprites)
 				c->draw();
-			SDL_RenderPresent(system.get_ren());
+			SDL_RenderPresent(sys.get_ren());
 
 		} //yttre while
 

@@ -1,16 +1,11 @@
 #include "Sprite.h"
 #include <iostream>
 
-using namespace std;
 
-//namespace SpriteGame{
+namespace SpriteGame{
 
-Sprite::Sprite(int x, int y, int w, int h): rect{x, y, w, h}{
-    
+    Sprite::Sprite(int x, int y, int w, int h) :rect{x, y, w, h}{}
+
+    Sprite::~Sprite(){}
+
 }
-
-/*void Sprite::move(int x, int y){
- cout << "Spritens funktion move" << endl;
-}
-*/
-//}

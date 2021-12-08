@@ -25,7 +25,7 @@ std::string resPath = "./resources/";
 //#define FPS 60
 
 
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) 
 	{
 		std::cout << "Error SDL2 Initialization : " << SDL_GetError();
@@ -41,13 +41,13 @@ int main(int argc, char* argv[]) {
 	SDL_Window* window 		= SDL_CreateWindow("Window", 100, 100, 800, 600, 0);
 	SDL_Renderer* renderer 	= SDL_CreateRenderer(window, -1, 0);
 
-	/*SDL_Surface* bg_sur = IMG_Load( (resPath + "images/bg.jpg").c_str() );*/
-	Snake* snake = new Snake(10, 10, 10, 10);
+	SDL_Surface* bg_sur = IMG_Load( (resPath + "images/bg.jpg").c_str() );
+	
 
 	//TODO gör bilden mindre!
-	SDL_Texture* bg_tex = SDL_CreateTextureFromSurface(renderer, snake->getSurface());
+	SDL_Texture* bg_tex = SDL_CreateTextureFromSurface(renderer, bg_sur);
 	
-	SDL_FreeSurface(snake->getSurface());
+	SDL_FreeSurface(bg_sur);
 
 	std::cout << "Avsluta programmet genom \"quit\" från fönstrets meny eller genom att stänga fönstret!" << std::endl;
 
@@ -76,4 +76,4 @@ int main(int argc, char* argv[]) {
 	SDL_Quit();
 	
 	return EXIT_SUCCESS;
-}
+}*/

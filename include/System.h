@@ -21,7 +21,7 @@ namespace SpriteGame{
 
     };
 
-    extern System system;
+    extern System sys;
 
 
 }
