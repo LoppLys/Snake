@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <SDL2/SDL.h>
+#include "System.h"
 
 namespace SpriteGame {
 
