@@ -8,4 +8,6 @@ namespace SpriteGame{
 
     Sprite::~Sprite(){}
 
+    
+
 }

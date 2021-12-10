@@ -20,6 +20,7 @@ protected:
 Snake(int x, int y, int w, int h);
 private:
 SDL_Surface* snake_head;
+SDL_Texture* texture;
 
 
 };

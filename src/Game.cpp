@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "System.h"
 #include <SDL2/SDL.h>
 #include "System.h"
 
@@ -19,7 +20,7 @@ namespace SpriteGame {
 					for (Sprite* c : sprites)
 						c->keyLeft(eve);
 					break;
-				case SDL_KeyCode (SDLK_RIGHT):
+				case SDL_KeyCode(SDLK_RIGHT):
 					for (Sprite* c : sprites)
 						c->keyRight(eve);
 					break;

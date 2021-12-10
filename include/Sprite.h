@@ -16,13 +16,11 @@ public:
     SDL_Rect getRect() const { return rect; }
 //virtual void tick() = 0;
 private:
-    std::string name;
     SDL_Rect rect; 
+    Sprite(const Sprite&) = delete;
+    const Sprite& operator=(const Sprite&) = delete;
 protected:
     Sprite(int x, int y, int w, int h);
-    //: //rect { x,y,w,h} {}
-    
-
 };
 }
 
