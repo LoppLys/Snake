@@ -6,14 +6,15 @@
 namespace SpriteGame{
 class Sprite {
 public:
-    virtual ~Sprite();
+    virtual ~Sprite(); 
     virtual void move(int x, int y){}
-    virtual void keyRight(const SDL_Event&) {}
+   /* virtual void keyRight(const SDL_Event&) {}
 	virtual void keyLeft(const SDL_Event&) {}
 	virtual void keyDown(const SDL_Event&) {}
 	virtual void keyUp(const SDL_Event&) {}
+    */
 	virtual void draw() const = 0;
-    SDL_Rect getRect() const { return rect; }
+    const SDL_Rect& getRect() const { return rect; }
 //virtual void tick() = 0;
 private:
     SDL_Rect rect; 
