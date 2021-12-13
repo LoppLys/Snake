@@ -3,6 +3,8 @@
 #include <SDL2/SDL.h>
 #include "Snake.h"
 
+//#define FPS 60
+
 namespace SpriteGame {
 
     void Game::add(Snake* c) {
@@ -10,6 +12,7 @@ namespace SpriteGame {
 	}
 
 	void Game::addSnake(Snake* s){
+		snake = s;
 		sprites.push_back(s);
 	}
 
@@ -20,37 +23,17 @@ namespace SpriteGame {
 			while (SDL_PollEvent(&eve)) {
 				switch (eve.type) {
 					case SDL_QUIT: quit = true; break;
-					/*case SDL_KeyCode(SDLK_LEFT):
-						snake->keyLeft();
-						break;
-					for (Snake* c : sprites)
-						c->keyLeft();
-					break;
-					
-				
-					case SDL_KeyCode(SDLK_RIGHT):
-					for (Sprite* c : sprites)
-						c->keyRight(eve);
-					break;
-					*/
-				
 					case SDL_KEYDOWN:
-						snake->keyDown();
-					break;
-					/*for (Sprite* c : sprites)
-						c->keyDown(eve);
-					break;
-					*/
-					case SDL_KEYUP: 
-						snake->keyUp();
-					break;
-					default: 
-					break;
-					//for (Snake* c : sprites)
-					//	c->keyUp();
-					//break;
+						switch(eve.key.keysym.sym){
+							case SDLK_RIGHT: snake->keyRight(); break;
+							case SDLK_LEFT: snake->keyLeft(); break;
+							case SDLK_UP: snake->keyUp(); break;
+							case SDLK_DOWN: snake->keyDown(); break;
+						}
+						break;
 				} // switch
 			} // inre while
+		
 			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
 			SDL_RenderClear(sys.get_ren());
 			for (Snake* c : sprites)
@@ -66,3 +49,17 @@ namespace SpriteGame {
 	}
 
 }
+
+
+/*
+bool goOn = true;
+const int tickIntervall = 1000 /FPS;
+while(goOn){
+			Uint32 nextTick = SDL_GetTicks() + tickIntervall;
+}
+int delay = nextTick - SDL_GetTicks();
+			if(delay > 0){
+				SDL_Delay(delay);
+			}
+
+*/

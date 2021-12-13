@@ -14,14 +14,14 @@ void keyDown();
 void keyLeft();
 void keyRight();
 void draw() const;
-SDL_Surface* getSurface(){return snake_head;}
+SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
 ~Snake();
 protected:
 Snake(int x, int y, int w, int h);
 private:
 SDL_Surface* snake_head;
 SDL_Texture* texture;
-
+SDL_Rect snakeRect;
 
 };
 
