@@ -3,11 +3,11 @@
 #include <SDL2/SDL.h>
 #include "Snake.h"
 
-//#define FPS 60
+#define FPS 60
 
 namespace SpriteGame {
 
-    void Game::add(Snake* c) {
+    void Game::add(Sprite* c) {
 		sprites.push_back(c);
 	}
 
@@ -17,8 +17,12 @@ namespace SpriteGame {
 	}
 
 	void Game::run() {
+    const int tickIntervall = 1000 /FPS;
+    int delay;
+
 		bool quit = false;
 		while (!quit) {
+			Uint32 nextTick = SDL_GetTicks() + tickIntervall;
 			SDL_Event eve;
 			while (SDL_PollEvent(&eve)) {
 				switch (eve.type) {
@@ -33,11 +37,19 @@ namespace SpriteGame {
 						break;
 				} // switch
 			} // inre while
-		
+			delay = nextTick - SDL_GetTicks();
+			if(delay > 0){
+				SDL_Delay(delay);
+			}
 			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
 			SDL_RenderClear(sys.get_ren());
-			for (Snake* c : sprites)
+			if(snake->getRect().x < 0 || snake->getRect().x > 600 || snake->getRect().y < 0 || snake->getRect().y > 400){
+				quit = true;}
+
+			//snake->draw();
+			for (Sprite* c : sprites)
 				c->draw();
+
 			SDL_RenderPresent(sys.get_ren());
 
 		} //yttre while
@@ -50,16 +62,3 @@ namespace SpriteGame {
 
 }
 
-
-/*
-bool goOn = true;
-const int tickIntervall = 1000 /FPS;
-while(goOn){
-			Uint32 nextTick = SDL_GetTicks() + tickIntervall;
-}
-int delay = nextTick - SDL_GetTicks();
-			if(delay > 0){
-				SDL_Delay(delay);
-			}
-
-*/

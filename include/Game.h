@@ -12,13 +12,13 @@ namespace SpriteGame {
 	public:
         // add apples during runtime
 		void addSnake(Snake* sn);
-		void add(Snake* s);
+		void add(Sprite* s);
 		Snake* getSnake() {return snake;}
 
 		void run();
 		~Game();
 	private:
-		std::vector<Snake*> sprites;
+		std::vector<Sprite*> sprites;
 		Snake* snake;
 	};
 }

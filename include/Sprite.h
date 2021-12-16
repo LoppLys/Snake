@@ -8,14 +8,9 @@ class Sprite {
 public:
     virtual ~Sprite(); 
     virtual void move(int x, int y){}
-   /* virtual void keyRight(const SDL_Event&) {}
-	virtual void keyLeft(const SDL_Event&) {}
-	virtual void keyDown(const SDL_Event&) {}
-	virtual void keyUp(const SDL_Event&) {}
-    */
-	virtual void draw() const = 0;
-    const SDL_Rect& getRect() const { return rect; }
-//virtual void tick() = 0;
+	virtual void draw() = 0;
+    SDL_Rect& getRect() { return rect; }
+
 private:
     SDL_Rect rect; 
     Sprite(const Sprite&) = delete;

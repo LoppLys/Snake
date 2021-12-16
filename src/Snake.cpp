@@ -9,42 +9,63 @@ namespace SpriteGame {
 
 Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h){ 
 
-    snake_head = IMG_Load("./resources/images/Mindre_snake.png");
+    snake_head = IMG_Load("./resources/images/left_snake.png");
 	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
-	snakeRect = {0,0, snake_head->w, snake_head -> h};
-    
+	direction = -1;
+
 }
 Snake::~Snake(){
 	SDL_FreeSurface(snake_head);
 	SDL_DestroyTexture(texture);
 }
 
-Snake* Snake::getInstance(int x, int y, int w, int h) {
+/*Snake* Snake::getInstance(int x, int y, int w, int h) {
 		return new Snake(x, y, w, h);
-	}
+	}*/
 
 void Snake::keyUp(){
 	std::cout << "up key pushed"  << std::endl;
-	snakeRect.y--;
+	snake_head = IMG_Load("./resources/images/up_snake.png");
+	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	direction = 4;
 }
 
 void Snake::keyDown(){
 	std::cout << "down key pushed"  << std::endl;
-	snakeRect.y++;
+	snake_head = IMG_Load("./resources/images/down_snake.png");
+	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	direction = 1;
 }
 void Snake::keyLeft(){
 	std::cout << "left key pushed"  << std::endl;
-	snakeRect.x--;
+	snake_head = IMG_Load("./resources/images/left_snake.png");
+	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	direction = 2;
 }
 
 void Snake::keyRight(){
 	std::cout << "right key pushed"  << std::endl;
-	snakeRect.x++;
+	snake_head = IMG_Load("./resources/images/right_snake.png");
+	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	direction = 3;
+	
 }
 
-void Snake::draw() const{
+/*int Snake::getDirection(){
+	std::cout << "getDirection  " << direction << std::endl;
+	return *direction;
+}*/
+
+void Snake::draw(){
 	//SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
-	SDL_RenderCopy(sys.get_ren(),texture,NULL, &snakeRect);
+	std::cout << "draw " << direction << std::endl;
+	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
+	switch (direction){
+		case 4: getRect().y--; break;
+		case 1: getRect().y++; break;
+		case 2: getRect().x--; break;
+		case 3: getRect().x++; break;
+	}
 }
 
 }
