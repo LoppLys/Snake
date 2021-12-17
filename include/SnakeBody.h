@@ -9,10 +9,10 @@ namespace SpriteGame {
 class SnakeBody : public Sprite {
 
 public:
-void keyUp();
-void keyDown();
-void keyLeft();
-void keyRight();
+void keyUp(){};
+void keyDown(){};
+void keyLeft(){};
+void keyRight(){};
 SnakeBody(int x, int y, int h, int w);
 ~SnakeBody();
 void draw();

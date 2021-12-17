@@ -30,6 +30,8 @@ namespace SpriteGame {
 							case SDLK_UP: s->keyUp(); break;
 							case SDLK_DOWN: s->keyDown(); break;
 						}
+						if(s->getRect().x < 0 || s->getRect().x > 600 || s->getRect().y < 0 || s->getRect().y > 400){
+							quit = true;}
 					}
 					break;
 				} // switch
@@ -40,10 +42,6 @@ namespace SpriteGame {
 			}
 			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
 			SDL_RenderClear(sys.get_ren());
-			//if(snake->getRect().x < 0 || snake->getRect().x > 600 || snake->getRect().y < 0 || snake->getRect().y > 400){
-			//	quit = true;}
-
-			//snake->draw();
 			for (Sprite* c : sprites)
 				c->draw();
 

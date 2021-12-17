@@ -7,10 +7,10 @@
 namespace SpriteGame{ 
 class Sprite {
 public:
-    virtual void keyUp();
-    virtual void keyDown();
-    virtual void keyLeft();
-    virtual void keyRight();
+    virtual void keyUp() = 0;
+    virtual void keyDown() = 0;
+    virtual void keyLeft() = 0;
+    virtual void keyRight() = 0;
     virtual ~Sprite(); 
     virtual void move(int x, int y){}
 	virtual void draw() = 0;
