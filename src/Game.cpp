@@ -11,11 +11,6 @@ namespace SpriteGame {
 		sprites.push_back(c);
 	}
 
-	void Game::addSnake(Snake* s){
-		snake = s;
-		sprites.push_back(s);
-	}
-
 	void Game::run() {
     const int tickIntervall = 1000 /FPS;
     int delay;
@@ -28,13 +23,15 @@ namespace SpriteGame {
 				switch (eve.type) {
 					case SDL_QUIT: quit = true; break;
 					case SDL_KEYDOWN:
+					for(Sprite * s: sprites){
 						switch(eve.key.keysym.sym){
-							case SDLK_RIGHT: snake->keyRight(); break;
-							case SDLK_LEFT: snake->keyLeft(); break;
-							case SDLK_UP: snake->keyUp(); break;
-							case SDLK_DOWN: snake->keyDown(); break;
+							case SDLK_RIGHT: s->keyRight(); break;
+							case SDLK_LEFT: s->keyLeft(); break;
+							case SDLK_UP: s->keyUp(); break;
+							case SDLK_DOWN: s->keyDown(); break;
 						}
-						break;
+					}
+					break;
 				} // switch
 			} // inre while
 			delay = nextTick - SDL_GetTicks();
@@ -43,8 +40,8 @@ namespace SpriteGame {
 			}
 			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
 			SDL_RenderClear(sys.get_ren());
-			if(snake->getRect().x < 0 || snake->getRect().x > 600 || snake->getRect().y < 0 || snake->getRect().y > 400){
-				quit = true;}
+			//if(snake->getRect().x < 0 || snake->getRect().x > 600 || snake->getRect().y < 0 || snake->getRect().y > 400){
+			//	quit = true;}
 
 			//snake->draw();
 			for (Sprite* c : sprites)

@@ -7,7 +7,7 @@
 
 namespace SpriteGame {
 
-    SnakeBody::SnakeBody(int x, int y, int w, int h): Snake(x,y,w,h){
+    SnakeBody::SnakeBody(int x, int y, int w, int h): Sprite(x,y,w,h){
             snake_body= IMG_Load("./resources/images/SnakeBody.png");
 	        texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_body);
             
@@ -19,16 +19,7 @@ namespace SpriteGame {
     }
 
     void SnakeBody::draw(){
-        std::cout << Snake::getDirection() << std::endl;
         SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
-        switch (Snake::getDirection()){
-		case 0: getRect().y--; break;
-		case 1: getRect().y++; break;
-		case 2: getRect().x--; break;
-		case 3: getRect().x++; break;
-
-	}
-        
     }
   
 }

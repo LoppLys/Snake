@@ -17,8 +17,7 @@ int main(int argc, char** argv) {
     Game game;
     
     Snake* snake = new Snake(263,153,20,20);
-    game.addSnake(snake);
-    game.add(new SnakeBody(snake->getRect().x,snake->getRect().y,20,20));
+    game.add(snake);
     game.run();
 
     return 0;

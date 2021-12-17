@@ -3,9 +3,14 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-namespace SpriteGame{
+
+namespace SpriteGame{ 
 class Sprite {
 public:
+    virtual void keyUp();
+    virtual void keyDown();
+    virtual void keyLeft();
+    virtual void keyRight();
     virtual ~Sprite(); 
     virtual void move(int x, int y){}
 	virtual void draw() = 0;

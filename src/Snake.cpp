@@ -12,8 +12,11 @@ Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h){
     snake_head = IMG_Load("./resources/images/left_snake.png");
 	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
 	direction = -1;
+	SnakeBody * b = new SnakeBody(x,y,w,h);
+	addBodyPart(b);
 
 }
+
 Snake::~Snake(){
 	SDL_FreeSurface(snake_head);
 	SDL_DestroyTexture(texture);
@@ -66,6 +69,10 @@ void Snake::draw(){
 		case 2: getRect().x--; break;
 		case 3: getRect().x++; break;
 	}
+}
+
+void Snake::addBodyPart(SnakeBody* bodyPart){
+	body.push_back(bodyPart);
 }
 
 }
