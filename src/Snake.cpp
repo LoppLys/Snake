@@ -66,23 +66,30 @@ void Snake::draw(){
 	//SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
 	std::cout << "draw " << direction << std::endl;
 	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
-	for(SnakeBody * b: body){
+	for(SnakeBody* b: body){
 	switch (direction){
 		case 0: 
 		getRect().y-- ;
-		b->getRect().y;
+		b->getRect().y = getRect().y;
+		b->getRect().y += b->getRect().h;
 		b->draw();
 		 break;
 		case 1: 
 		getRect().y++;
+		b->getRect().y = getRect().y;
+		b->getRect().y -= b->getRect().h;
 		b->draw();
 		 break;
 		case 2: 
 		getRect().x--;
+		b->getRect().x = getRect().x;
+		b->getRect().x += b->getRect().h;
 		b->draw();
 		break;
 		case 3: 
 		getRect().x++; 
+		b->getRect().x = getRect().x;
+		b->getRect().x += b->getRect().h;
 		b->draw();
 		break;
 	}
