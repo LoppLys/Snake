@@ -71,25 +71,29 @@ void Snake::draw(){
 		case 0: 
 		getRect().y-- ;
 		b->getRect().y = getRect().y;
-		b->getRect().y += b->getRect().h;
+		b->getRect().y += b->getRect().h - 7;
+		b->getRect().x = getRect().x;
 		b->draw();
 		 break;
 		case 1: 
 		getRect().y++;
 		b->getRect().y = getRect().y;
-		b->getRect().y -= b->getRect().h;
+		b->getRect().y -= b->getRect().h -7;
+		b->getRect().x = getRect().x;
 		b->draw();
 		 break;
 		case 2: 
 		getRect().x--;
 		b->getRect().x = getRect().x;
-		b->getRect().x += b->getRect().h;
+		b->getRect().x += b->getRect().h -7;
+		b->getRect().y = getRect().y;
 		b->draw();
 		break;
 		case 3: 
 		getRect().x++; 
 		b->getRect().x = getRect().x;
-		b->getRect().x += b->getRect().h;
+		b->getRect().x -= b->getRect().h -7;
+		b->getRect().y = getRect().y;
 		b->draw();
 		break;
 	}
