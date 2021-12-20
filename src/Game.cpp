@@ -8,12 +8,17 @@
 
 namespace SpriteGame {
 
+	Game::Game(Sprite * c){
+		character = c;
+		add(c);
+	}
+
+
     void Game::add(Sprite* c) {
 		sprites.push_back(c);
 	}
 
 	void Game::run() {
-	character = sprites.at(0);
     const int tickIntervall = 1000 /FPS;
     int delay;
 		bool quit = false;
@@ -30,15 +35,7 @@ namespace SpriteGame {
 							case SDLK_LEFT: s->keyLeft(); break;
 							case SDLK_UP: s->keyUp(); break;
 							case SDLK_DOWN: s->keyDown(); break;
-						}
-						if(s->getRect().x < 0 || s->getRect().x > 600 || s->getRect().y < 0 || s->getRect().y > 400){
-							quit = true;}
-						
-						if(s != sprites.at(0) && s->getRect().x == character->getRect().x && s->getRect().y == character->getRect().y){
-							std::cout << "COLLIDED" << std::endl;
-							s->collide();
-							delete(s);
-						}
+						}						
 					}
 					break;
 				} // switch
@@ -49,8 +46,16 @@ namespace SpriteGame {
 			}
 			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
 			SDL_RenderClear(sys.get_ren());
-			for (Sprite* c : sprites)
-				c->draw();
+			for (Sprite* s : sprites){
+				s->draw();
+				if(character->getRect().x < 0 || character->getRect().x > 600 || character->getRect().y < 0 || character->getRect().y > 400){
+					quit = true;}
+				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
+				//	std::cout << "COLLIDED" << std::endl;
+							s->collide(s);
+							
+				}
+			}
 
 			SDL_RenderPresent(sys.get_ren());
 

@@ -14,17 +14,12 @@ namespace SpriteGame {
         
     }
 
-    void Powerup::add(int start_x, int start_y){
+   /* void Powerup::add(int start_x, int start_y){
         Powerup* r = new Bomb(start_x, start_y,20,20);
         r->draw();
     }
 
-    void Powerup::collide(){
-        std::cout << "COLLIDED" << std::endl;
-        add(100, 100);
         
-    }
-        /*
         int x = 90, y = 90;
         Powerup* r;
         r->onScreen = false;
@@ -49,7 +44,7 @@ namespace SpriteGame {
     }
 
     void Powerup::draw(){
-        add(90, 90);
+    
     }
   
 }

@@ -17,13 +17,11 @@ using namespace SpriteGame;
 using namespace std;
 
 int main(int argc, char** argv) {
-    Game game;
+    
     
     Snake* snake = new Snake(263,153,20,20);
-    
-    Powerup* p = new Powerup(90, 50, 20, 20);
-    
-    game.add(snake);
+    Game game(snake);
+    Powerup* p = new Bomb(90, 50, 20, 20);
     game.add(p);
     game.run();
 

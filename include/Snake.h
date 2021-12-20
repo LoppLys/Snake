@@ -17,7 +17,7 @@ void keyDown();
 void keyLeft();
 void keyRight();
 void draw();
-void collide() {};
+void collide(){};
 Snake(int x, int y, int w, int h);
 void addBodyPart(SnakeBody* b);
 SDL_Surface* getSnake(){return snake_head;}
