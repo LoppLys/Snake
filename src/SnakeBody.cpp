@@ -21,5 +21,7 @@ namespace SpriteGame {
     void SnakeBody::draw(){
         SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
     }
+
+
   
 }

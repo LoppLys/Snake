@@ -13,6 +13,7 @@ void keyUp(){};
 void keyDown(){};
 void keyLeft(){};
 void keyRight(){};
+void collide(){};
 SnakeBody(int x, int y, int h, int w);
 ~SnakeBody();
 void draw();

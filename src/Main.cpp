@@ -8,6 +8,9 @@
 #include "System.h"
 #include <iostream>
 #include <string>
+#include "Bomb.h"
+#include "RedApple.h"
+#include "Powerup.h"
 
 
 using namespace SpriteGame;
@@ -17,8 +20,13 @@ int main(int argc, char** argv) {
     Game game;
     
     Snake* snake = new Snake(263,153,20,20);
+    
+    Powerup* p = new Powerup(90, 50, 20, 20);
+    
     game.add(snake);
+    game.add(p);
     game.run();
+
 
     return 0;
 }

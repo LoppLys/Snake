@@ -64,7 +64,7 @@ void Snake::keyRight(){
 
 void Snake::draw(){
 	//SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
-	std::cout << "draw " << direction << std::endl;
+	//std::cout << "draw " << direction << std::endl;
 	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
 	for(SnakeBody* b: body){
 	switch (direction){
@@ -103,5 +103,7 @@ void Snake::draw(){
 void Snake::addBodyPart(SnakeBody* bodyPart){
 	body.push_back(bodyPart);
 }
+
+
 
 }
