@@ -13,6 +13,7 @@ namespace SpriteGame {
 	}
 
 	void Game::run() {
+	character = sprites.at(0);
     const int tickIntervall = 1000 /FPS;
     int delay;
 		bool quit = false;
@@ -23,9 +24,7 @@ namespace SpriteGame {
 				switch (eve.type) {
 					case SDL_QUIT: quit = true; break;
 					case SDL_KEYDOWN:
-					int x = 0, y = 0;
 					for(Sprite * s: sprites){
-						std::cout << x << std::endl;
 						switch(eve.key.keysym.sym){
 							case SDLK_RIGHT: s->keyRight(); break;
 							case SDLK_LEFT: s->keyLeft(); break;
@@ -34,15 +33,12 @@ namespace SpriteGame {
 						}
 						if(s->getRect().x < 0 || s->getRect().x > 600 || s->getRect().y < 0 || s->getRect().y > 400){
 							quit = true;}
-
-						if(s->getRect().x == x && s->getRect().y == y){
+						
+						if(s != sprites.at(0) && s->getRect().x == character->getRect().x && s->getRect().y == character->getRect().y){
 							std::cout << "COLLIDED" << std::endl;
 							s->collide();
 							delete(s);
 						}
-						x = s->getRect().x;
-						y = s->getRect().y;
-						
 					}
 					break;
 				} // switch

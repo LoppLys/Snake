@@ -7,7 +7,6 @@
 #include "Snake.h"
 
 namespace SpriteGame {
-
 	class Game{
 	public:
         // add apples during runtime
@@ -17,6 +16,7 @@ namespace SpriteGame {
 		~Game();
 	private:
 		std::vector<Sprite*> sprites;
+		Sprite* character;
 	};
 }
 #endif
