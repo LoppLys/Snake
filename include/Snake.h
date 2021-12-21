@@ -25,6 +25,8 @@ SDL_Surface* getSnake(){return snake_head;}
 //SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
 void setSpeed(int s){speed = s;}
 int getSpeed(){return speed;}
+void removeBody(){body.clear();}
+void removeOneBodyPart(){body.pop_back();}
 ~Snake();
 
 

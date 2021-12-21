@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include "System.h"
 #include "Sprite.h"
+#include "Snake.h"
 namespace SpriteGame {
 
     RottenApple::RottenApple(int x, int y, int w, int h): Powerup(x,y,w,h){
@@ -19,5 +20,13 @@ namespace SpriteGame {
     void RottenApple::draw(){
         SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
     }
-  
+
+
+    void RottenApple::impact(Sprite * s){
+        if(dynamic_cast<Snake*>(s)){
+            //static_cast<Snake*>(s)
+            ((Snake*) s)->removeOneBodyPart();
+        }
+    }
+
 }

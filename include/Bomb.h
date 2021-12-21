@@ -8,7 +8,7 @@ class Bomb : public Powerup{
 public:
     Bomb(int x, int y, int w, int h);
     void draw();
-    void impact(Sprite *){}
+    void impact(Sprite *);
     ~Bomb();
     void collide(){};
     //Impact on snake: Decrease body by half
