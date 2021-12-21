@@ -18,6 +18,7 @@ public:
     SDL_Rect& getRect() { return rect; }
     virtual void collide(Sprite*s){}//{delete s;}
     virtual void impact(Sprite *) = 0;
+    void removeSprite(Sprite * s);
 
 
 private:

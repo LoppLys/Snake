@@ -3,6 +3,10 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include "Snake.h"
+#include <vector>
+#include <algorithm>
+
+
 
 #define FPS 60
 
@@ -53,7 +57,14 @@ namespace SpriteGame {
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
 					std::cout << "COLLIDED" << std::endl;
 							character->collide(s);
-							sprites.pop_back();
+							//std::vector<SnakeBody *>::iterator iter;
+							//iter = remove(sprites.begin(), sprites.end(), s);
+			
+							auto iter = find(sprites.begin(), sprites.end(), s);
+							sprites.erase(iter);
+							
+							
+							//sprites.pop_back();
 				}
 			}
 
@@ -67,5 +78,11 @@ namespace SpriteGame {
 	{
 	}
 
+	/*int indexOf(std::vector<Sprite*> vec, Sprite *s){
+		auto it = find(vec.begin(), vec.end(), s);
+    	if (it != vec.end()){
+        int index = it - vec.begin();
+        return index;
+	}
+*/
 }
-

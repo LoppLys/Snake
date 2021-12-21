@@ -8,5 +8,7 @@ namespace SpriteGame{
 
     Sprite::~Sprite(){}
     
-
+    void Sprite::removeSprite(Sprite* s){
+      //  if()
+    }
 }
