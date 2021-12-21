@@ -67,6 +67,42 @@ void Snake::draw(){
 	//std::cout << "draw " << direction << std::endl;
 	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
 	if(!body.empty()){
+		for(int i = 0; i < (int)body.size(); i++){
+			switch(direction){
+				case 0: 
+					getRect().y-=speed; ;
+					body.at(i)->getRect().y = getRect().y;
+					body.at(i)->getRect().y += body.at(i)->getRect().h - 7;
+					body.at(i)->getRect().x = getRect().x;
+					body.at(i)->draw();
+		 			break;
+				case 1: 
+					getRect().y+=speed;
+					body.at(i)->getRect().y = getRect().y;
+					body.at(i)->getRect().y -= body.at(i)->getRect().h -7;
+					body.at(i)->getRect().x = getRect().x;
+					body.at(i)->draw();
+		 			break;
+				case 2: 
+					getRect().x-=speed;
+					body.at(i)->getRect().x = getRect().x;
+					body.at(i)->getRect().x += body.at(i)->getRect().h -7;
+					body.at(i)->getRect().y = getRect().y;
+					body.at(i)->draw();
+					break;
+				case 3: 
+					getRect().x+=speed; 
+					body.at(i)->getRect().x = getRect().x;
+					body.at(i)->getRect().x -= body.at(i)->getRect().h -7;
+					body.at(i)->getRect().y = getRect().y;
+					body.at(i)->draw();
+					break;
+					}
+				}
+
+
+
+	/*if(!body.empty()){
 		for(SnakeBody* b: body){
 		switch (direction){
 			case 0: 
@@ -99,6 +135,7 @@ void Snake::draw(){
 			break;
 		}
 	}
+	*/
 	}else{ //Needed this else statement because if not the snake did not move when all bodies were lost
 		switch (direction){
 			case 0: 
