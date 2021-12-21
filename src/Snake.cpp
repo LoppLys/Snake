@@ -67,34 +67,30 @@ void Snake::draw(){
 	//std::cout << "draw " << direction << std::endl;
 	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
 	if(!body.empty()){
-		for(int i = (int)body.size() -1; i >= 0; i--){
+		for(int i = 0; i < (int)body.size(); i++){
 			switch(direction){
-				case 0: 
-					getRect().y-=speed;
-					body.at(i)->getRect().y = getRect().y + 5;
-					body.at(i)->getRect().y += getRect().h -5 + (i*12);
-					body.at(i)->getRect().x = getRect().x + 5;
+				case 0: // Up
+					getRect().y-=speed; 
+					body.at(i)->getRect().y = getRect().y + (body.at(i)->getRect().h * (i+1)) +body.at(i)->getRect().h/2;
+					body.at(i)->getRect().x = getRect().x + 4;
 					body.at(i)->draw();
 		 			break;
-				case 1: 
+				case 1: // down
 					getRect().y+=speed;
-					body.at(i)->getRect().y = getRect().y ;
-					body.at(i)->getRect().y -= getRect().h -10 + (i*12);
-					body.at(i)->getRect().x = getRect().x + 5;
+					body.at(i)->getRect().y = getRect().y - (body.at(i)->getRect().h * (i+1));
+					body.at(i)->getRect().x = getRect().x + 4;
 					body.at(i)->draw();
 		 			break;
-				case 2: 
+				case 2: // Left
 					getRect().x-=speed;
-					body.at(i)->getRect().x = getRect().x;
-					body.at(i)->getRect().x += getRect().h -1 + (i*12);
-					body.at(i)->getRect().y = getRect().y + 5;
+					body.at(i)->getRect().x = getRect().x + (body.at(i)->getRect().h * (i+1)) + body.at(i)->getRect().h/2;
+					body.at(i)->getRect().y = getRect().y + 4;
 					body.at(i)->draw();
 					break;
-				case 3: 
+				case 3: // Right
 					getRect().x+=speed; 
-					body.at(i)->getRect().x = getRect().x;
-					body.at(i)->getRect().x -= getRect().h -7 + (i*12);
-					body.at(i)->getRect().y = getRect().y + 5;
+					body.at(i)->getRect().x = getRect().x - (body.at(i)->getRect().h * (i+1));
+					body.at(i)->getRect().y = getRect().y + 4;
 					body.at(i)->draw();
 					break;
 					}
