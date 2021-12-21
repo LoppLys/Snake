@@ -51,8 +51,10 @@ namespace SpriteGame {
 				if(character->getRect().x < 0 || character->getRect().x > 600 || character->getRect().y < 0 || character->getRect().y > 400){
 					quit = true;}
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
-				//	std::cout << "COLLIDED" << std::endl;
-							s->collide(s);
+					std::cout << "COLLIDED" << std::endl;
+							character->collide(s);
+							sprites.pop_back();
+	
 							
 				}
 			}

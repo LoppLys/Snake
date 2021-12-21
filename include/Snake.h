@@ -17,12 +17,14 @@ void keyDown();
 void keyLeft();
 void keyRight();
 void draw();
-void collide(){};
+void collide(Sprite *s);
 Snake(int x, int y, int w, int h);
 void addBodyPart(SnakeBody* b);
 SDL_Surface* getSnake(){return snake_head;}
 //SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
 ~Snake();
+int speed = 1;
+
 
 //protected:
 private:

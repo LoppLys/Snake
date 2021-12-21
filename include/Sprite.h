@@ -15,7 +15,8 @@ public:
     //virtual void move(int x, int y){}
 	virtual void draw() = 0;
     SDL_Rect& getRect() { return rect; }
-    virtual void collide(Sprite*s){delete s;}
+    virtual void collide(Sprite*s){s->~Sprite();}//{delete s;}
+
 
 private:
     SDL_Rect rect; 

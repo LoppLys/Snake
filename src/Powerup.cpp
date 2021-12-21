@@ -5,6 +5,8 @@
 #include "RedApple.h"
 #include "Snake.h"
 #include "Bomb.h"
+#include "System.h"
+#include "GreenApple.h"
 
 
 #define FPS 80
@@ -15,11 +17,12 @@ namespace SpriteGame {
     }
 
    /* void Powerup::add(int start_x, int start_y){
-        Powerup* r = new Bomb(start_x, start_y,20,20);
-        r->draw();
-    }
-
+        Powerup* r = new GreenApple(start_x, start_y,20,20);
         
+    }
+    */
+
+        /*
         int x = 90, y = 90;
         Powerup* r;
         r->onScreen = false;
@@ -40,11 +43,18 @@ namespace SpriteGame {
     
 
     Powerup::~Powerup(){
-    
+        
     }
 
     void Powerup::draw(){
     
     }
+
+    void Powerup::collide(Sprite *s){
+        //SDL_RenderClear(sys.get_ren());
+        //new Powerup(30, 30, 20, 20);
+        
+    }
+    
   
 }

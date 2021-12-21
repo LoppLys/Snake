@@ -8,7 +8,7 @@ namespace SpriteGame{
 class Powerup : public Sprite{
 public:
     Powerup(int x, int y, int w, int h);
-   // void add(int, int);
+    void add(int, int);
     void keyUp(){};
     void keyDown(){};
     void keyLeft(){};
@@ -16,7 +16,7 @@ public:
     //virtual void remove();
     //virtual void impact();
     void draw();
-    void collide(){};
+    void collide(Sprite *s);
     ~Powerup();
 
 private:

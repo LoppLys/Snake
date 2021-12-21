@@ -11,6 +11,8 @@
 #include "Bomb.h"
 #include "RedApple.h"
 #include "Powerup.h"
+#include "GreenApple.h"
+#include "RottenApple.h"
 
 
 using namespace SpriteGame;
@@ -21,7 +23,7 @@ int main(int argc, char** argv) {
     
     Snake* snake = new Snake(263,153,20,20);
     Game game(snake);
-    Powerup* p = new Bomb(90, 50, 20, 20);
+    Powerup* p = new RottenApple(120, 100, 20, 20);
     game.add(p);
     game.run();
 
