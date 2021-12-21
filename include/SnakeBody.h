@@ -14,6 +14,7 @@ void keyDown(){};
 void keyLeft(){};
 void keyRight(){};
 void collide(){};
+void impact(Sprite *){}
 SnakeBody(int x, int y, int h, int w);
 ~SnakeBody();
 void draw();

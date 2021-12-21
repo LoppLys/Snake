@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
     
     Snake* snake = new Snake(263,153,20,20);
     Game game(snake);
-    Powerup* p = new RottenApple(120, 100, 20, 20);
+    Powerup* p = new GreenApple(120, 100, 20, 20);
     game.add(p);
     game.run();
 

@@ -18,16 +18,20 @@ void keyLeft();
 void keyRight();
 void draw();
 void collide(Sprite *s);
+void impact(Sprite *){}
 Snake(int x, int y, int w, int h);
-void addBodyPart(SnakeBody* b);
+void addBodyPart();
 SDL_Surface* getSnake(){return snake_head;}
 //SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
+void setSpeed(int s){speed = s;}
+int getSpeed(){return speed;}
 ~Snake();
-int speed = 1;
+
 
 
 //protected:
 private:
+int speed = 1;
 SDL_Surface* snake_head;
 SDL_Texture* texture;
 int direction;

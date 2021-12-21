@@ -13,8 +13,7 @@ Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h){
     snake_head = IMG_Load("./resources/images/left_snake.png");
 	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
 	direction = -1;
-	SnakeBody * b = new SnakeBody(x,y,w,h);
-	addBodyPart(b);
+	addBodyPart();
 }
 
 Snake::~Snake(){
@@ -118,19 +117,26 @@ void Snake::draw(){
 	}
 }
 
-void Snake::addBodyPart(SnakeBody* bodyPart){
-	body.push_back(bodyPart);
+void Snake::addBodyPart(){
+	SnakeBody * b = new SnakeBody(getRect().x,getRect().y,20,20);
+	body.push_back(b);
 }
 
 void Snake::collide(Sprite *s){
+	if(dynamic_cast<Powerup*>(s)){
+		s->impact(this);
+	}
+	
+	//s->collide();
 	//GreenApple *g = static_cast<GreenApple*>(s);
-	/*GREEN APPLE: works
-	speed = 6;
-	*/ 
+	//GREEN APPLE: works
+	//speed = 6;
+	// 
 	/* RED APPLE: (does not work)
-	SnakeBody * b = new SnakeBody(getRect().x + (vector.size()*20),(getRect().y + (vector.size()*20),20,20);
+	SnakeBody * b = new SnakeBody(getRect().x + 100, getRect().y + 100, 20, 20); //(vector.size()*20),(getRect().y + (vector.size()*20),20,20);
 	addBodyPart(b);
 	*/
+	
 	/* BOMB:
 		body.clear(); // har inte kollat om den här fungerar eftersom att tilläggen av kroppsdel inte fungerar än
 	*/

@@ -50,11 +50,14 @@ namespace SpriteGame {
     
     }
 
-    void Powerup::collide(Sprite *s){
+   /* void Powerup::collide(Sprite *s){
+        //std::cout << "hej" << std::endl;
+        //Snake::speed = 6;
         //SDL_RenderClear(sys.get_ren());
         //new Powerup(30, 30, 20, 20);
         
     }
+    */
     
   
 }

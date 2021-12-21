@@ -6,6 +6,9 @@
 
 namespace SpriteGame{
 class Powerup : public Sprite{
+
+friend class Snake;
+
 public:
     Powerup(int x, int y, int w, int h);
     void add(int, int);
@@ -14,15 +17,18 @@ public:
     void keyLeft(){};
     void keyRight(){};
     //virtual void remove();
-    //virtual void impact();
+    virtual void impact(Sprite *){};
     void draw();
-    void collide(Sprite *s);
+    virtual void collide(Sprite *s){};
     ~Powerup();
 
 private:
    // int popup_time;
   // bool onScreen;
 };
+
+
+
 }
 
 #endif

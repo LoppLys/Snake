@@ -54,8 +54,6 @@ namespace SpriteGame {
 					std::cout << "COLLIDED" << std::endl;
 							character->collide(s);
 							sprites.pop_back();
-	
-							
 				}
 			}
 

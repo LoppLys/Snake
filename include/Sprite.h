@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 
 
+
 namespace SpriteGame{ 
 class Sprite {
 public:
@@ -15,7 +16,8 @@ public:
     //virtual void move(int x, int y){}
 	virtual void draw() = 0;
     SDL_Rect& getRect() { return rect; }
-    virtual void collide(Sprite*s){s->~Sprite();}//{delete s;}
+    virtual void collide(Sprite*s){}//{delete s;}
+    virtual void impact(Sprite *) = 0;
 
 
 private:
