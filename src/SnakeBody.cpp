@@ -1,3 +1,4 @@
+#include "Snake.h"
 #include "Sprite.h"
 #include "SnakeBody.h"
 #include "System.h"
@@ -20,6 +21,9 @@ namespace SpriteGame {
 
     void SnakeBody::draw(){
         SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
+        
+        
+
     }
 
 

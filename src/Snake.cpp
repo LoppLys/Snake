@@ -63,90 +63,46 @@ void Snake::keyRight(){
 }
 
 void Snake::draw(){
-	//SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
-	//std::cout << "draw " << direction << std::endl;
 	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
+	switch (direction){
+			case 0: 
+			getRect().y-=speed; 
+		 	break;
+			case 1: 
+			getRect().y+=speed;
+		 	break;
+			case 2: 
+			getRect().x-=speed;
+			break;
+			case 3: 
+			getRect().x+=speed; 
+			break;
+		}
 	if(!body.empty()){
 		for(int i = 0; i < (int)body.size(); i++){
 			switch(direction){
 				case 0: // Up
-					getRect().y-=speed; 
 					body.at(i)->getRect().y = getRect().y + (body.at(i)->getRect().h * (i+1)) +body.at(i)->getRect().h/2;
 					body.at(i)->getRect().x = getRect().x + 4;
 					body.at(i)->draw();
 		 			break;
 				case 1: // down
-					getRect().y+=speed;
 					body.at(i)->getRect().y = getRect().y - (body.at(i)->getRect().h * (i+1));
 					body.at(i)->getRect().x = getRect().x + 4;
 					body.at(i)->draw();
 		 			break;
 				case 2: // Left
-					getRect().x-=speed;
 					body.at(i)->getRect().x = getRect().x + (body.at(i)->getRect().h * (i+1)) + body.at(i)->getRect().h/2;
 					body.at(i)->getRect().y = getRect().y + 4;
 					body.at(i)->draw();
 					break;
 				case 3: // Right
-					getRect().x+=speed; 
 					body.at(i)->getRect().x = getRect().x - (body.at(i)->getRect().h * (i+1));
 					body.at(i)->getRect().y = getRect().y + 4;
 					body.at(i)->draw();
 					break;
 					}
 				}
-
-
-
-	/*if(!body.empty()){
-		for(SnakeBody* b: body){
-		switch (direction){
-			case 0: 
-			getRect().y-=speed; ;
-			b->getRect().y = getRect().y;
-			b->getRect().y += b->getRect().h - 7;
-			b->getRect().x = getRect().x;
-			b->draw();
-		 	break;
-			case 1: 
-			getRect().y+=speed;
-			b->getRect().y = getRect().y;
-			b->getRect().y -= b->getRect().h -7;
-			b->getRect().x = getRect().x;
-			b->draw();
-		 	break;
-			case 2: 
-			getRect().x-=speed;
-			b->getRect().x = getRect().x;
-			b->getRect().x += b->getRect().h -7;
-			b->getRect().y = getRect().y;
-			b->draw();
-			break;
-			case 3: 
-			getRect().x+=speed; 
-			b->getRect().x = getRect().x;
-			b->getRect().x -= b->getRect().h -7;
-			b->getRect().y = getRect().y;
-			b->draw();
-			break;
-		}
-	}
-	*/
-	}else{ //Needed this else statement because if not the snake did not move when all bodies were lost
-		switch (direction){
-			case 0: 
-			getRect().y-=speed; ;
-		 	break;
-			case 1: 
-			getRect().y+=speed;
-		 	break;
-			case 2: 
-			getRect().x-=speed;
-			break;
-			case 3: 
-			getRect().x+=speed; 
-			break;
-		}
 	}
 }
 

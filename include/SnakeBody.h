@@ -7,7 +7,7 @@
 namespace SpriteGame {
 
 class SnakeBody : public Sprite {
-
+friend class Snake;
 public:
 void keyUp(){};
 void keyDown(){};

@@ -27,6 +27,7 @@ void setSpeed(int s){speed = s;}
 int getSpeed(){return speed;}
 void removeBody(){body.clear();}
 void removeOneBodyPart(){body.pop_back();}
+int& getDirection(){return direction;}
 ~Snake();
 
 
