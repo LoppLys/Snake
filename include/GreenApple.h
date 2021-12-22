@@ -14,8 +14,7 @@ public:
 
     //Impact on snake: Increase speed - for a short period of time
 private:
-    SDL_Surface* green_apple;
-    SDL_Texture* texture;
+
 
 };
 

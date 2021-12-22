@@ -14,8 +14,7 @@ public:
     //Impact on snake: Decrease body by half
 
 private:
-    SDL_Surface* bomb;
-    SDL_Texture* texture;
+
 };
 }
 

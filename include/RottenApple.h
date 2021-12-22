@@ -13,8 +13,7 @@ public:
     //Impact on snake: Decrease body by 1 unit
 
 private:
-    SDL_Surface* rotten_apple;
-    SDL_Texture* texture;
+ 
 
 };
 

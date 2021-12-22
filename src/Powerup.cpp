@@ -11,9 +11,8 @@
 
 #define FPS 80
 namespace SpriteGame {
-    //Powerup::Powerup(int x, int y, int w, int h, int p_time) : Sprite(x, y, w, h), popup_time(p_time){
-    Powerup::Powerup(int x, int y, int w, int h) : Sprite(x, y, w, h){
-        
+    Powerup::Powerup(int x, int y, int w, int h, std::string imageLocation): Sprite(x, y, w, h, IMG_Load(imageLocation.c_str())){
+        //imageLocation.c_str()
     }
 
    /* void Powerup::add(int start_x, int start_y){
@@ -47,7 +46,7 @@ namespace SpriteGame {
     }
 
     void Powerup::draw(){
-    
+        Sprite::draw();
     }
 
    /* void Powerup::collide(Sprite *s){

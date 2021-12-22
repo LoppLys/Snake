@@ -1,3 +1,4 @@
+//Spelklass
 #ifndef SNAKE_H
 #define SNAKE_H
 
@@ -12,6 +13,7 @@ namespace SpriteGame {
 class Snake : public Sprite {
 public:
 //static Snake* getInstance(int x, int y, int w, int h);
+
 void keyUp();
 void keyDown();
 void keyLeft();
@@ -21,7 +23,7 @@ void collide(Sprite *s);
 void impact(Sprite *){}
 Snake(int x, int y, int w, int h);
 void addBodyPart();
-SDL_Surface* getSnake(){return snake_head;}
+//SDL_Surface* getSnake(){return snake_head;}
 //SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
 void setSpeed(int s){speed = s;}
 int getSpeed(){return speed;}
@@ -30,13 +32,9 @@ void removeOneBodyPart(){body.pop_back();}
 int& getDirection(){return direction;}
 ~Snake();
 
-
-
 //protected:
 private:
 int speed = 1;
-SDL_Surface* snake_head;
-SDL_Texture* texture;
 int direction;
 std::vector<SnakeBody *> body;
 

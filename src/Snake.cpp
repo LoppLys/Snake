@@ -8,25 +8,19 @@
 
 namespace SpriteGame {
 
-Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h){ 
-
-    snake_head = IMG_Load("./resources/images/left_snake.png");
-	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h, IMG_Load("./resources/images/left_snake.png")){ 
 	direction = -1;
 	addBodyPart();
 }
 
-Snake::~Snake(){
-	SDL_FreeSurface(snake_head);
-	SDL_DestroyTexture(texture);
-}
+Snake::~Snake(){}
 
 void Snake::keyUp(){
 	std::cout << "up key pushed"  << std::endl;
 	if(direction != 1){
 		direction = 0;
-		snake_head = IMG_Load("./resources/images/up_snake.png");
-		texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+		setSurface(IMG_Load("./resources/images/up_snake.png"));
+		setTexture(getSurface());
 	}
 	
 	
@@ -36,8 +30,8 @@ void Snake::keyDown(){
 	std::cout << "down key pushed"  << std::endl;
 	if(direction != 0){
 	direction = 1;
-	snake_head = IMG_Load("./resources/images/down_snake.png");
-	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	setSurface(IMG_Load("./resources/images/down_snake.png"));
+	setTexture(getSurface());
 	}
 	
 	
@@ -47,23 +41,23 @@ void Snake::keyLeft(){
 	std::cout << "left key pushed"  << std::endl;
 	if(direction != 3){
 	direction = 2;
-	snake_head = IMG_Load("./resources/images/left_snake.png");
-	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);}
-	
+	setSurface(IMG_Load("./resources/images/left_snake.png"));
+	setTexture(getSurface());
+	}
 }
 
 void Snake::keyRight(){
 	std::cout << "right key pushed"  << std::endl;
 	if(direction != 2){
 	direction = 3;
-	snake_head = IMG_Load("./resources/images/right_snake.png");
-	texture = SDL_CreateTextureFromSurface(sys.get_ren(),snake_head);
+	setSurface(IMG_Load("./resources/images/right_snake.png"));
+	setTexture(getSurface());
 	}
 	
 }
 
-void Snake::draw(){
-	SDL_RenderCopy(sys.get_ren(),texture,NULL, &getRect());
+void Snake::draw(){ // tick() istället
+	Sprite::draw();
 	switch (direction){
 			case 0: 
 			getRect().y-=speed; 
@@ -115,24 +109,6 @@ void Snake::collide(Sprite *s){
 	if(dynamic_cast<Powerup*>(s)){
 		s->impact(this);
 	}
-	
-	//s->collide();
-	//GreenApple *g = static_cast<GreenApple*>(s);
-	//GREEN APPLE: works
-	//speed = 6;
-	// 
-	/* RED APPLE: (does not work)
-	SnakeBody * b = new SnakeBody(getRect().x + 100, getRect().y + 100, 20, 20); //(vector.size()*20),(getRect().y + (vector.size()*20),20,20);
-	addBodyPart(b);
-	*/
-	
-	/* BOMB:
-		body.clear(); // har inte kollat om den här fungerar eftersom att tilläggen av kroppsdel inte fungerar än
-	*/
-	/* ROTTEN APPLE:
-		body.pop_back();
-	*/
-
 }
 
 

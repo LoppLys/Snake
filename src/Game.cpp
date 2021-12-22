@@ -1,3 +1,4 @@
+//spelmotorklass
 #include "Game.h"
 #include "System.h"
 #include <SDL2/SDL.h>
@@ -13,7 +14,7 @@
 namespace SpriteGame {
 
 	Game::Game(Sprite * c){
-		character = c;
+		character = c; 
 		add(c);
 	}
 
@@ -57,14 +58,8 @@ namespace SpriteGame {
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
 					std::cout << "COLLIDED" << std::endl;
 							character->collide(s);
-							//std::vector<SnakeBody *>::iterator iter;
-							//iter = remove(sprites.begin(), sprites.end(), s);
-			
 							auto iter = find(sprites.begin(), sprites.end(), s);
 							sprites.erase(iter);
-							
-							
-							//sprites.pop_back();
 				}
 			}
 
