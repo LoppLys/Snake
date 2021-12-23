@@ -9,6 +9,7 @@ public:
     RottenApple(int x, int y, int w, int h);
     void draw();
     void impact(Sprite *);
+    void tick(){}
     ~RottenApple();
     //Impact on snake: Decrease body by 1 unit
 

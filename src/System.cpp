@@ -26,8 +26,6 @@ namespace SpriteGame{
 		return ren;
 	}
 
-    
-
 	/*TTF_Font* System::get_font() const {
 		return font;
 	}*/

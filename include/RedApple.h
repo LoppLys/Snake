@@ -9,6 +9,7 @@ public:
     RedApple(int x, int y, int w, int h);
     ~RedApple();
     void impact(Sprite *);
+    void tick();
     void draw();
     //Impact on snake: Increase body by 1 unit
     

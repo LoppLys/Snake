@@ -17,6 +17,7 @@ public:
     virtual void keyRight() = 0;
     virtual ~Sprite(); 
 	virtual void draw(); 
+    virtual void tick() = 0;
     SDL_Rect& getRect() { return rect; }
     virtual void collide(Sprite*s){}
     virtual void impact(Sprite *) = 0;
@@ -26,6 +27,7 @@ public:
     void setImage(std::string image){setSurface(IMG_Load(image.c_str()));}
     SDL_Texture* getTexture(){return texture;}
     void setTexture(SDL_Surface* new_surface){texture = SDL_CreateTextureFromSurface(sys.get_ren(), new_surface);}
+    
 
 private:
     SDL_Rect rect; 

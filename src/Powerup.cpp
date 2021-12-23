@@ -12,14 +12,33 @@
 #define FPS 80
 namespace SpriteGame {
     Powerup::Powerup(int x, int y, int w, int h, std::string imageLocation): Sprite(x, y, w, h, IMG_Load(imageLocation.c_str())){
-        //imageLocation.c_str()
+    
+    }
+
+    void Powerup::tick(){
+		counter++;
+		if (getRect().x >= 600){
+            delete(this);
+            //vi behöver typ en:
+            /*
+            void System::remove(Sprite * s){
+                sprites.erase(find(sprites.begin(), sprites.end(), s));
+            }
+            istället för delete(this) för spelet krashar
+            */
+        }
+		
+		else if (counter % 10 == 0)
+			getRect().x+= 4;
+	
     }
 
    /* void Powerup::add(int start_x, int start_y){
-        Powerup* r = new GreenApple(start_x, start_y,20,20);
-        
+        Powerup* r = new GreenApple(start_x, start_y,17,17); 
+        r->draw();
     }
     */
+    
 
         /*
         int x = 90, y = 90;
@@ -48,15 +67,4 @@ namespace SpriteGame {
     void Powerup::draw(){
         Sprite::draw();
     }
-
-   /* void Powerup::collide(Sprite *s){
-        //std::cout << "hej" << std::endl;
-        //Snake::speed = 6;
-        //SDL_RenderClear(sys.get_ren());
-        //new Powerup(30, 30, 20, 20);
-        
-    }
-    */
-    
-  
 }

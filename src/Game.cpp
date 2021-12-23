@@ -53,6 +53,7 @@ namespace SpriteGame {
 			SDL_RenderClear(sys.get_ren());
 			for (Sprite* s : sprites){
 				s->draw();
+				s->tick();
 				if(character->getRect().x < 0 || character->getRect().x > 600 || character->getRect().y < 0 || character->getRect().y > 400){
 					quit = true;}
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){

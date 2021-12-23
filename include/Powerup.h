@@ -16,14 +16,17 @@ public:
     void keyDown(){};
     void keyLeft(){};
     void keyRight(){};
-    //virtual void remove();
+    void tick();
+    //void move(int, int);
+    void remove();
     virtual void impact(Sprite *){};
     void draw();
-    virtual void collide(Sprite *s){};
+    virtual void collide(Sprite *){};
     ~Powerup();
     //virtual void setImageLocation(SDL_Surface* image){imageLocation = image;}
 
 private:
+    int counter = 0;
    // int popup_time;
   // bool onScreen;
 

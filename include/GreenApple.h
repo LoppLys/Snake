@@ -10,6 +10,7 @@ public:
     GreenApple(int x, int y, int w, int h);
     void draw();
     void impact(Sprite *);
+    void tick(){}
     ~GreenApple();
 
     //Impact on snake: Increase speed - for a short period of time

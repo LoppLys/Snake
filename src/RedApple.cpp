@@ -14,6 +14,10 @@ namespace SpriteGame {
         
     }
 
+    void RedApple::tick(){
+        Powerup::tick();
+    }
+
     void RedApple::draw(){
         Sprite::draw();
     }

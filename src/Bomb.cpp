@@ -6,14 +6,9 @@
 #include "Snake.h"
 namespace SpriteGame {
 
-    Bomb::Bomb(int x, int y, int w, int h): Powerup(x,y,w,h, "./resources/images/bomb.png"){
-           
-            
-    }
+    Bomb::Bomb(int x, int y, int w, int h): Powerup(x,y,w,h, "./resources/images/bomb.png"){}
 
-    Bomb::~Bomb(){
-        
-    }
+    Bomb::~Bomb(){}
 
     void Bomb::draw(){
         Sprite::draw();
@@ -21,7 +16,6 @@ namespace SpriteGame {
 
     void Bomb::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
-            //static_cast<Snake*>(s)
             ((Snake*) s)->removeBody();
         }
     }
