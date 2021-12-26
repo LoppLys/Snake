@@ -14,6 +14,10 @@ namespace SpriteGame {
         Sprite::draw();
     }
 
+    void Bomb::tick(){
+        Powerup::tick();
+    }
+
     void Bomb::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
             ((Snake*) s)->removeBody();

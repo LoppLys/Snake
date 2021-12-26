@@ -19,6 +19,10 @@ namespace SpriteGame {
         Sprite::draw();
     }
 
+    void RottenApple::tick(){
+        Powerup::tick();
+    }
+
 
     void RottenApple::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){

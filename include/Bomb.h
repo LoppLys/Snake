@@ -9,7 +9,7 @@ public:
     Bomb(int x, int y, int w, int h);
     void draw();
     void impact(Sprite *);
-    void tick(){}
+    void tick();
     ~Bomb();
     void collide(){};
     //Impact on snake: Decrease body by half

@@ -19,6 +19,10 @@ namespace SpriteGame {
         Sprite::draw();
     }
 
+    void GreenApple::tick(){
+        Powerup::tick();
+    }
+
     void GreenApple::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
             //static_cast<Snake*>(s)

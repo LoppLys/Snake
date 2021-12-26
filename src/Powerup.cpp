@@ -18,19 +18,10 @@ namespace SpriteGame {
     void Powerup::tick(){
 		counter++;
 		if (getRect().x >= 600){
-            delete(this);
-            //vi behöver typ en:
-            /*
-            void System::remove(Sprite * s){
-                sprites.erase(find(sprites.begin(), sprites.end(), s));
-            }
-            istället för delete(this) för spelet krashar
-            */
+            removeSprite(this);
         }
-		
 		else if (counter % 10 == 0)
-			getRect().x+= 4;
-	
+			getRect().x+= 4; //hastighet
     }
 
    /* void Powerup::add(int start_x, int start_y){
