@@ -6,6 +6,7 @@
 #include "Snake.h"
 #include <vector>
 #include <algorithm>
+#include "Powerup.h"
 
 
 
@@ -65,6 +66,10 @@ namespace SpriteGame {
 			}
 
 			SDL_RenderPresent(sys.get_ren());
+			if(nextTick%10 < 10){
+                Powerup* p = nullptr;
+                sprites.push_back(p->add());
+                }
 
 		} //yttre while
 

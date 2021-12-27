@@ -12,7 +12,7 @@
 #define FPS 80
 namespace SpriteGame {
     Powerup::Powerup(int x, int y, int w, int h, std::string imageLocation): Sprite(x, y, w, h, IMG_Load(imageLocation.c_str())){
-    
+
     }
 
     void Powerup::tick(){
@@ -24,11 +24,14 @@ namespace SpriteGame {
 			getRect().x+= 4; //hastighet
     }
 
-   /* void Powerup::add(int start_x, int start_y){
-        Powerup* r = new GreenApple(start_x, start_y,17,17); 
-        r->draw();
+    Sprite* Powerup::add(){
+        //Powerup* r = new GreenApple(start_x, start_y,17,17); 
+        //r->draw();
+        std::cout << "hej" << std::endl;
+        Powerup * r = new Bomb(300, 300, 20, 20);
+        return r;
     }
-    */
+    
     
 
         /*
