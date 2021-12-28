@@ -18,8 +18,8 @@ void keyUp();
 void keyDown();
 void keyLeft();
 void keyRight();
-void draw();
-void tick(){};
+void draw(){};
+void tick();
 void collide(Sprite *s);
 void impact(Sprite *){}
 Snake(int x, int y, int w, int h);
@@ -36,7 +36,7 @@ int& getDirection(){return direction;}
 //protected:
 private:
 int speed = 1;
-int direction;
+int direction = -1;
 std::vector<SnakeBody *> body;
 
 

@@ -14,8 +14,34 @@ namespace SpriteGame {
 
     SnakeBody::~SnakeBody(){
         
+    }    
+
+    void SnakeBody::tick(){
+    Sprite::draw();
     }
 
+    void SnakeBody::follow(int x,int y, int i, int direction){ 
+        tick();
+	switch(direction){
+				case 0: // Up
+					getRect().y = y + (getRect().h * (i+1)) +getRect().h/2;
+					getRect().x = x + 4;
+		 			break;
+				case 1: // down
+					getRect().y = y - (getRect().h * (i+1));
+					getRect().x = x + 4;
+		 			break;
+				case 2: // Left
+                    getRect().x = x + (getRect().h * (i+1)) + getRect().h/2;
+					getRect().y = y + 4;
+					break;
+				case 3: // Right
+					getRect().x = x - (getRect().h * (i+1));
+					getRect().y = y + 4;
+					break;
+					}
+				
+    }
 
 
   

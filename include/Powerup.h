@@ -11,7 +11,7 @@ class Powerup : public Sprite{
 
 public:
     Powerup(int x, int y, int w, int h, std::string imageLocation);
-    Sprite* add();
+    Sprite* add(int x, int y, int s);
     void keyUp(){};
     void keyDown(){};
     void keyLeft(){};

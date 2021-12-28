@@ -58,7 +58,7 @@ namespace SpriteGame {
 				if(character->getRect().x < 0 || character->getRect().x > 600 || character->getRect().y < 0 || character->getRect().y > 400){
 					quit = true;}
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
-					std::cout << "COLLIDED" << std::endl;
+					//std::cout << "COLLIDED" << std::endl;
 							character->collide(s);
 							auto iter = find(sprites.begin(), sprites.end(), s);
 							sprites.erase(iter);
@@ -66,10 +66,7 @@ namespace SpriteGame {
 			}
 
 			SDL_RenderPresent(sys.get_ren());
-			if(nextTick%10 < 10){
-                Powerup* p = nullptr;
-                sprites.push_back(p->add());
-                }
+			Spawn(nextTick,delay);
 
 		} //yttre while
 
@@ -77,6 +74,16 @@ namespace SpriteGame {
 
 	Game::~Game()
 	{
+	}
+
+	void Game::Spawn(int nextTick, int delay){
+		if(nextTick%10 < 3 && delay%10 == 5 ){
+				int x = rand() % 300;
+				int y = rand() % 200;
+				int s = rand() % 4;
+                Powerup* p = nullptr;
+                sprites.push_back(p->add(x,y,s));
+    	}
 	}
 
 	/*int indexOf(std::vector<Sprite*> vec, Sprite *s){

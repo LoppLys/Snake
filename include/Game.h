@@ -14,6 +14,7 @@ namespace SpriteGame {
 		void add(Sprite* s);
 		void run();
 		~Game();
+		void Spawn (int, int);
 	private:
 		std::vector<Sprite*> sprites;
 		Sprite* character;

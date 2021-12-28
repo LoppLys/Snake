@@ -14,14 +14,16 @@ void keyDown(){};
 void keyLeft(){};
 void keyRight(){};
 void collide(){};
-void tick(){}
+void tick();
 void impact(Sprite *){}
+void follow(int,int, int,int);
 SnakeBody(int x, int y, int h, int w);
 ~SnakeBody();
 
 
 private:
-
+int direction = -1;
+int speed = 1;
 };
 
 }

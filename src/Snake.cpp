@@ -9,8 +9,7 @@
 namespace SpriteGame {
 
 Snake::Snake (int x, int y, int w, int h): Sprite(x,y,w,h, IMG_Load("./resources/images/left_snake.png")){ 
-	direction = -1;
-	addBodyPart();
+
 }
 
 Snake::~Snake(){}
@@ -56,8 +55,12 @@ void Snake::keyRight(){
 	
 }
 
-void Snake::draw(){ // tick() istället
+void Snake::tick(){ // tick() istället
 	Sprite::draw();
+	for(std::size_t i = 0; i != body.size();i++){
+			body[i]->follow(getRect().x,getRect().y,i, direction);
+			
+		}
 	switch (direction){
 			case 0: 
 			getRect().y-=speed; 
@@ -72,37 +75,19 @@ void Snake::draw(){ // tick() istället
 			getRect().x+=speed; 
 			break;
 		}
-	if(!body.empty()){
-		for(int i = 0; i < (int)body.size(); i++){
-			switch(direction){
-				case 0: // Up
-					body.at(i)->getRect().y = getRect().y + (body.at(i)->getRect().h * (i+1)) +body.at(i)->getRect().h/2;
-					body.at(i)->getRect().x = getRect().x + 4;
-					body.at(i)->draw();
-		 			break;
-				case 1: // down
-					body.at(i)->getRect().y = getRect().y - (body.at(i)->getRect().h * (i+1));
-					body.at(i)->getRect().x = getRect().x + 4;
-					body.at(i)->draw();
-		 			break;
-				case 2: // Left
-					body.at(i)->getRect().x = getRect().x + (body.at(i)->getRect().h * (i+1)) + body.at(i)->getRect().h/2;
-					body.at(i)->getRect().y = getRect().y + 4;
-					body.at(i)->draw();
-					break;
-				case 3: // Right
-					body.at(i)->getRect().x = getRect().x - (body.at(i)->getRect().h * (i+1));
-					body.at(i)->getRect().y = getRect().y + 4;
-					body.at(i)->draw();
-					break;
-					}
-				}
-	}
+		
 }
 
+
 void Snake::addBodyPart(){
-	SnakeBody * b = new SnakeBody(getRect().x,getRect().y,12,12);
+	if(!body.empty()){
+	SnakeBody * b = new SnakeBody(body.back()->getRect().x+12,body.back()->getRect().y+12,12,12);
+	body.push_back(b);}
+	else{
+	SnakeBody * b = new SnakeBody(getRect().x+12,getRect().y+12,12,12);
 	body.push_back(b);
+	}
+	
 }
 
 void Snake::collide(Sprite *s){

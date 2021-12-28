@@ -7,6 +7,7 @@
 #include "Bomb.h"
 #include "System.h"
 #include "GreenApple.h"
+#include"RottenApple.h"
 
 
 #define FPS 80
@@ -16,19 +17,34 @@ namespace SpriteGame {
     }
 
     void Powerup::tick(){
+        
 		counter++;
-		if (getRect().x >= 600){
+		if (getRect().x >= 600 || getRect().x < 0){
             removeSprite(this);
         }
-		else if (counter % 10 == 0)
-			getRect().x+= 4; //hastighet
+		else if (counter % 10 == 0){
+
+			getRect().x+= 4;//hastighet
+        }
     }
 
-    Sprite* Powerup::add(){
-        //Powerup* r = new GreenApple(start_x, start_y,17,17); 
-        //r->draw();
-        std::cout << "hej" << std::endl;
-        Powerup * r = new Bomb(300, 300, 20, 20);
+    Sprite* Powerup::add(int x, int y, int s){
+        Powerup* r; 
+        
+        switch (s){
+			case 0: 
+			 r = new GreenApple(x, y, 20, 20);
+		 	break;
+			case 1: 
+             r = new RedApple(x, y, 20, 20);
+		 	break;
+			case 2: 
+			 r = new Bomb(x, y, 20, 20);
+			break;
+			case 3: 
+			 r = new RottenApple(x, y, 20, 20);
+			break;
+		}
         return r;
     }
     
