@@ -80,7 +80,7 @@ namespace SpriteGame {
 		if(nextTick%10 < 3 && delay%10 == 5 ){
 				int x = rand() % 300;
 				int y = rand() % 200;
-				int s = rand() % 4;
+				int s = rand() % 5;
                 Powerup* p = nullptr;
                 sprites.push_back(p->add(x,y,s));
     	}

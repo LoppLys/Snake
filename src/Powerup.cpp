@@ -36,12 +36,13 @@ namespace SpriteGame {
 			 r = new GreenApple(x, y, 20, 20);
 		 	break;
 			case 1: 
+            case 2:
              r = new RedApple(x, y, 20, 20);
 		 	break;
-			case 2: 
+			case 3: 
 			 r = new Bomb(x, y, 20, 20);
 			break;
-			case 3: 
+			case 4: 
 			 r = new RottenApple(x, y, 20, 20);
 			break;
 		}
