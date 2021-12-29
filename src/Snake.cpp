@@ -57,10 +57,15 @@ void Snake::keyRight(){
 
 void Snake::tick(){ // tick() istället
 	Sprite::draw();
+	/*if(body.size() > 0){
+		body.at(0)->follow(getRect().x, getRect().y, body, 0, direction);
+	}
+	*/
 	for(std::size_t i = 0; i != body.size();i++){
 			body[i]->follow(getRect().x,getRect().y,i, direction);
 			
 		}
+		
 	switch (direction){
 			case 0: 
 			getRect().y-=speed; 
