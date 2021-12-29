@@ -1,12 +1,14 @@
 //spelmotorklass
 #include "Game.h"
 #include "System.h"
+#include "Snake.h"
+#include "Powerup.h"
 #include <SDL2/SDL.h>
 #include <iostream>
-#include "Snake.h"
 #include <vector>
 #include <algorithm>
-#include "Powerup.h"
+
+
 
 
 
@@ -25,6 +27,7 @@ namespace SpriteGame {
 	}
 
 	void Game::run() {
+	score = "Current score ";// + character->getSize();
     const int tickIntervall = 1000 /FPS;
     int delay;
 		bool quit = false;
@@ -50,12 +53,15 @@ namespace SpriteGame {
 			if(delay > 0){
 				SDL_Delay(delay);
 			}
-			SDL_SetRenderDrawColor(sys.get_ren(), 255, 255, 255, 255);
+			
+			SDL_SetRenderDrawColor(sys.get_ren(), 255, 200, 255, 255);
 			SDL_RenderClear(sys.get_ren());
+			
 			for (Sprite* s : sprites){
 				s->draw();
 				s->tick();
-				if(character->getRect().x < 0 || character->getRect().x > 600 || character->getRect().y < 0 || character->getRect().y > 400){
+				if(character->getRect().x < 0 || character->getRect().x > 650 || character->getRect().y < 0 || character->getRect().y > 450){
+					//gameOver();
 					quit = true;}
 				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
 					//std::cout << "COLLIDED" << std::endl;
@@ -64,9 +70,11 @@ namespace SpriteGame {
 							sprites.erase(iter);
 				}
 			}
-
-			SDL_RenderPresent(sys.get_ren());
+			
+			RenderText(score);
 			Spawn(nextTick,delay);
+			SDL_RenderPresent(sys.get_ren());
+			//SDL_DestroyTexture(txtTexture);
 
 		} //yttre while
 
@@ -84,6 +92,20 @@ namespace SpriteGame {
                 Powerup* p = nullptr;
                 sprites.push_back(p->add(x,y,s));
     	}
+	}
+
+	void Game::RenderText(const char* text){
+		SDL_Color txtColor = {0,0,0};
+		txtSurface= TTF_RenderText_Solid(sys.get_font(),text,txtColor);
+		txtTexture = SDL_CreateTextureFromSurface(sys.get_ren(), txtSurface);
+		SDL_Rect txtRect = {450,10, txtSurface->w,txtSurface->h};
+		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &txtRect);
+		SDL_FreeSurface(txtSurface);
+		
+	}
+	
+	void Game::gameOver(){
+		
 	}
 
 	/*int indexOf(std::vector<Sprite*> vec, Sprite *s){

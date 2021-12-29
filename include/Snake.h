@@ -28,6 +28,7 @@ void addBodyPart();
 //SDL_Surface* getSurface(){return snake_head;} //Den här används nog inte
 void setSpeed(int s){speed = s;}
 int getSpeed(){return speed;}
+int getSize(){return body.size();}
 void removeBody(){body.clear();}
 void removeOneBodyPart(){body.pop_back();}
 int& getDirection(){return direction;}

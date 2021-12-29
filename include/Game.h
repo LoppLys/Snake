@@ -15,9 +15,14 @@ namespace SpriteGame {
 		void run();
 		~Game();
 		void Spawn (int, int);
+		void RenderText(const char*);
+		void gameOver();
 	private:
 		std::vector<Sprite*> sprites;
 		Sprite* character;
+		SDL_Surface* txtSurface;
+		SDL_Texture * txtTexture;
+		const char* score;
 	};
 }
 #endif

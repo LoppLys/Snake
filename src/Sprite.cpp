@@ -22,6 +22,7 @@ namespace SpriteGame{
 
     void Sprite::draw(){
      SDL_RenderCopy(sys.get_ren(),texture, NULL, &getRect());
+     
     }
 
     
