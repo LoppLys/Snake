@@ -20,6 +20,7 @@ namespace SpriteGame {
 
     void Bomb::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
+            ((Snake*) s)->setSpeed(2);
             ((Snake*) s)->removeBody();
         }
     }

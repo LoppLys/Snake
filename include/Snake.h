@@ -30,13 +30,13 @@ void setSpeed(int s){speed = s;}
 int getSpeed(){return speed;}
 int getSize(){return body.size();}
 void removeBody(){body.clear();}
-void removeOneBodyPart(){body.pop_back();}
+void removeOneBodyPart();
 int& getDirection(){return direction;}
 ~Snake();
 
 //protected:
 private:
-int speed = 1;
+int speed = 2;
 int direction = -1;
 std::vector<SnakeBody *> body;
 

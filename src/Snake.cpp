@@ -96,5 +96,11 @@ void Snake::collide(Sprite *s){
 	}
 }
 
+void Snake::removeOneBodyPart(){
+	if(!body.empty()){
+		body.pop_back();
+	}
+}
+
 
 }

@@ -25,7 +25,6 @@ namespace SpriteGame {
 
     void GreenApple::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
-            //static_cast<Snake*>(s)
             ((Snake*) s)->setSpeed(4);
         }
     }

@@ -26,7 +26,7 @@ namespace SpriteGame {
 
     void RottenApple::impact(Sprite * s){
         if(dynamic_cast<Snake*>(s)){
-            //static_cast<Snake*>(s)
+            ((Snake*) s)->setSpeed(2);
             ((Snake*) s)->removeOneBodyPart();
         }
     }
