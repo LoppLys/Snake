@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
-#include "GreenApple.h"
+#include "RedApple.h"
 
 namespace SpriteGame {
 
@@ -95,10 +95,15 @@ void Snake::addBodyPart(){
 	
 }
 
-void Snake::collide(Sprite *s){
-	if(dynamic_cast<Powerup*>(s)){
-		s->impact(this);
-	}
+int Snake::collide(Sprite* s){
+    int i = 0;
+    if(dynamic_cast<Powerup*>(s)){
+        s->impact(this);
+        if(dynamic_cast<RedApple*>(s)){
+        i = 1;
+        }
+    }
+    return i;
 }
 
 void Snake::removeOneBodyPart(){

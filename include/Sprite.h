@@ -19,7 +19,7 @@ public:
 	virtual void draw(); 
     virtual void tick() = 0;
     SDL_Rect& getRect() { return rect; }
-    virtual void collide(Sprite*s){}
+    virtual int collide(Sprite*s){return 0;}
     virtual void impact(Sprite *) = 0;
     void removeSprite(Sprite * s);
     SDL_Surface* getSurface(){return surface;}

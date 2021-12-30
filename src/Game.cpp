@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #define FPS 60
 
@@ -24,6 +25,7 @@ namespace SpriteGame {
 	void Game::run() {
 	playSound(sys.get_backSound(),-1);
 	score = "Current score ";// + character->getSize();
+	points = 0;
     const int tickIntervall = 1000 /FPS;
     int delay;
 		bool quit = false;
@@ -62,6 +64,7 @@ namespace SpriteGame {
 			}
 			
 			RenderText(score);
+			renderPoints(points);
 			Spawn(nextTick,delay);
 			SDL_RenderPresent(sys.get_ren());
 			SDL_DestroyTexture(txtTexture);
@@ -89,8 +92,19 @@ namespace SpriteGame {
 		SDL_Rect txtRect = {450,10, txtSurface->w,txtSurface->h};
 		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &txtRect);
 		SDL_FreeSurface(txtSurface);
-		
 	}
+
+	void Game::renderPoints(int points){
+		std::string pointsStr = std::to_string(points);
+		SDL_Color black = { 0,0,0 };
+		SDL_Surface* surface_points =
+			TTF_RenderText_Solid(sys.get_font(), pointsStr.c_str(), black);
+		SDL_Texture* pointsTx = SDL_CreateTextureFromSurface(sys.get_ren(), surface_points);
+		SDL_Rect pointsRect = { 450,30,surface_points->w, surface_points->h };
+		SDL_RenderCopy(sys.get_ren(),pointsTx, NULL , &pointsRect);
+		SDL_FreeSurface(surface_points);
+	}
+	
 	void Game::playSound(Mix_Chunk* sound, int i){
 		int channel = Mix_PlayChannel(-1,sound,i);
 		if(channel == -1){
@@ -100,8 +114,7 @@ namespace SpriteGame {
 	}
 
 	bool Game::outOfBounds(){
-		
-		if(character->getRect().x < -20 || character->getRect().x > 620 || character->getRect().y < -20 || character->getRect().y > 420){
+		if(character->getRect().x < -20 || character->getRect().x > 650 || character->getRect().y < -20 || character->getRect().y > 450){
 			return true;
 		} else
 			return false;
@@ -110,9 +123,10 @@ namespace SpriteGame {
 	void Game::checkCollision(Sprite * s){
 		if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
 			playSound(sys.get_soundEffect(),0);
-			character->collide(s);
+			int i = character->collide(s);
 			auto iter = find(sprites.begin(), sprites.end(), s);
 			sprites.erase(iter);
+			points += i;
 		}
 	}
 	

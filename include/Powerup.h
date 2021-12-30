@@ -21,7 +21,7 @@ public:
     void remove();
     virtual void impact(Sprite *){};
     void draw(){};
-    virtual void collide(Sprite *){};
+    virtual int collide(Sprite *){return 0;};
     ~Powerup();
     //virtual void setImageLocation(SDL_Surface* image){imageLocation = image;}
 
