@@ -92,13 +92,11 @@ namespace SpriteGame {
 	}
 
 	bool Game::outOfBounds(){
-		bool outOfBounds = false;
+		
 		if(character->getRect().x < -20 || character->getRect().x > 650 || character->getRect().y < -20 || character->getRect().y > 450){
-			//gameOver();
-			//quit = true;}
-			outOfBounds = true;
-		}
-		return outOfBounds;
+			return true;
+		} else
+			return false;
 	}
 
 	void Game::checkCollision(Sprite * s){
