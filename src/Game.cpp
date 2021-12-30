@@ -24,7 +24,7 @@ namespace SpriteGame {
 
 	void Game::run() {
 	playSound(sys.get_backSound(),-1);
-	score = "Current score ";// + character->getSize();
+	score = "Current score ";
 	points = 0;
     const int tickIntervall = 1000 /FPS;
     int delay;
@@ -62,10 +62,8 @@ namespace SpriteGame {
 				}
 				checkCollision(s);
 			}
-			
-			RenderText(score);
 			renderPoints(points);
-			Spawn(nextTick,delay);
+			spawn(nextTick,delay);
 			SDL_RenderPresent(sys.get_ren());
 			SDL_DestroyTexture(txtTexture);
 
@@ -75,7 +73,7 @@ namespace SpriteGame {
 
 	Game::~Game(){}
 
-	void Game::Spawn(int nextTick, int delay){
+	void Game::spawn(int nextTick, int delay){
 		if(nextTick%10 < 3 && delay%10 == 5 ){
 				int x = rand() % 600;
 				int y = rand() % 100;
@@ -85,24 +83,15 @@ namespace SpriteGame {
     	}
 	}
 
-	void Game::RenderText(const char* text){
-		SDL_Color txtColor = {0,0,0};
-		txtSurface= TTF_RenderText_Solid(sys.get_font(),text,txtColor);
-		txtTexture = SDL_CreateTextureFromSurface(sys.get_ren(), txtSurface);
-		SDL_Rect txtRect = {450,10, txtSurface->w,txtSurface->h};
-		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &txtRect);
-		SDL_FreeSurface(txtSurface);
-	}
-
 	void Game::renderPoints(int points){
-		std::string pointsStr = std::to_string(points);
+		std::string pointsStr = "Score " + std::to_string(points);
 		SDL_Color black = { 0,0,0 };
-		SDL_Surface* surface_points =
+		txtSurface =
 			TTF_RenderText_Solid(sys.get_font(), pointsStr.c_str(), black);
-		SDL_Texture* pointsTx = SDL_CreateTextureFromSurface(sys.get_ren(), surface_points);
-		SDL_Rect pointsRect = { 450,30,surface_points->w, surface_points->h };
-		SDL_RenderCopy(sys.get_ren(),pointsTx, NULL , &pointsRect);
-		SDL_FreeSurface(surface_points);
+		txtTexture = SDL_CreateTextureFromSurface(sys.get_ren(), txtSurface);
+		SDL_Rect pointsRect = { 450,10,txtSurface->w, txtSurface->h };
+		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &pointsRect);
+		SDL_FreeSurface(txtSurface);
 	}
 	
 	void Game::playSound(Mix_Chunk* sound, int i){
@@ -130,8 +119,5 @@ namespace SpriteGame {
 		}
 	}
 	
-	void Game::gameOver(){
-		
-	}
 
 }

@@ -41,31 +41,7 @@ namespace SpriteGame {
 					getRect().y = y + 4;
 					break;
 					}
-   /* void SnakeBody::follow(int x,int y, std::vector<SnakeBody *> body, std::size_t place, int direction){
-		if(place < body.size()){
-			body[place]->getRect().x = x;
-			body[place]->getRect().y = y;
-			body[place]->tick();
-			switch (direction)
-			{
-			case 0: //up
-				follow(getRect().x + 4, getRect().y + (getRect().h * (place+1)) + getRect().h/2, body, place + 1, direction);
-				break;
-			case 1: //down
-				follow(getRect().x + 4, getRect().y - (getRect().h * (place+1)) + getRect().h/2, body,  place + 1, direction);
-				break;
-			case 2: //left
-				follow(getRect().x + (getRect().h * (place+1)) + getRect().h/2, getRect().y + 4, body,  place + 1, direction);
-				break;
-			case 3:
-				follow(getRect().x - (getRect().h * (place+1)), getRect().y + 4, body, place + 1, direction);
-				break;
-			default:
-				break;
-			}
-		}*/
-					
-				
+
     }
 
 

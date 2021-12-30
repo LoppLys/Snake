@@ -7,7 +7,6 @@
 namespace SpriteGame{
 
     Sprite::Sprite(int x, int y, int w, int h, SDL_Surface* surface) :rect{x, y, w, h}, surface(surface){
-       // texture = SDL_CreateTextureFromSurface(sys.get_ren(), surface);
         
     }
 
@@ -17,7 +16,7 @@ namespace SpriteGame{
     }
     
     void Sprite::removeSprite(Sprite* s){
-      
+        
     }
 
     void Sprite::draw(){

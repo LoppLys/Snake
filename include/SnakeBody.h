@@ -18,10 +18,8 @@ void collide(){};
 void tick();
 void impact(Sprite *){}
 void follow(int,int, int,int);
-//void follow(int,int, std::vector<SnakeBody*>, std::size_t, int);
 SnakeBody(int x, int y, int h, int w);
 ~SnakeBody();
-
 
 private:
 int direction = -1;

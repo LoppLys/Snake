@@ -20,7 +20,7 @@ namespace SpriteGame {
          Sprite::draw();
 		counter++;
 		if (getRect().x >= 600 || getRect().x < 0){
-            removeSprite(this);
+            this->~Powerup();
         }
 		else if (counter % 10 == 0){
 
@@ -51,28 +51,8 @@ namespace SpriteGame {
     
     
 
-        /*
-        int x = 90, y = 90;
-        Powerup* r;
-        r->onScreen = false;
-        while(!r->onScreen){
-            Uint32 tickInterval = 1000 / FPS;
-            Uint32 nextTick = SDL_GetTicks() + tickInterval;
-            r = new RedApple(x, y, 20, 20);
-            r->draw();
-            x += 20;
-            y += 15;
-            int delay = nextTick - SDL_GetTicks();
-            if(delay > 0){
-                SDL_Delay(delay);
-            }
-            r->onScreen = true;
-        }
-        */
-    
-
     Powerup::~Powerup(){
-        
-    }
+        Sprite::~Sprite();
 
+}
 }

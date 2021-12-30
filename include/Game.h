@@ -14,8 +14,7 @@ namespace SpriteGame {
         void add(Sprite* s);
         void run();
         ~Game();
-        void Spawn (int, int);
-        void RenderText(const char*);
+        void spawn (int, int);
         void gameOver();
         bool outOfBounds();
         void checkCollision(Sprite *);
