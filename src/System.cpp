@@ -15,7 +15,8 @@ namespace SpriteGame{
        exit(-1);
     }
     font = TTF_OpenFont("./resources/fonts/verdana.ttf",18); 
-    sound = Mix_LoadWAV("./resources/sounds/background-loop-001.wav");
+    backSound = Mix_LoadWAV("./resources/sounds/background-loop-001.wav");
+    soundEffect = Mix_LoadWAV("./resources/sounds/eating-sound-effect.wav");
     win = SDL_CreateWindow("SpriteGame",SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400,0);
     ren = SDL_CreateRenderer(win,-1,0);
     
@@ -26,7 +27,8 @@ namespace SpriteGame{
 
     System::~System(){
 
-        Mix_FreeChunk(sound);
+        Mix_FreeChunk(backSound);
+        Mix_FreeChunk(soundEffect);
         Mix_CloseAudio();
         TTF_CloseFont(font);
         TTF_Quit();
@@ -43,8 +45,12 @@ namespace SpriteGame{
 		return font;
 	}
 
-    Mix_Chunk* System::get_sound() const{
-        return sound;
+    Mix_Chunk* System::get_backSound() const{
+        return backSound;
+    }
+
+    Mix_Chunk* System::get_soundEffect() const{
+        return soundEffect;
     }
 
 	System sys; 

@@ -22,7 +22,7 @@ namespace SpriteGame {
 	}
 
 	void Game::run() {
-	playSound();
+	playSound(sys.get_backSound(),-1);
 	score = "Current score ";// + character->getSize();
     const int tickIntervall = 1000 /FPS;
     int delay;
@@ -91,8 +91,8 @@ namespace SpriteGame {
 		SDL_FreeSurface(txtSurface);
 		
 	}
-	void Game::playSound(){
-		int channel = Mix_PlayChannel(-1,sys.get_sound(),1);
+	void Game::playSound(Mix_Chunk* sound, int i){
+		int channel = Mix_PlayChannel(-1,sound,i);
 		if(channel == -1){
 			std::cout << "No sound" << std::endl;
 		}
@@ -109,6 +109,7 @@ namespace SpriteGame {
 
 	void Game::checkCollision(Sprite * s){
 		if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
+			playSound(sys.get_soundEffect(),0);
 			character->collide(s);
 			auto iter = find(sprites.begin(), sprites.end(), s);
 			sprites.erase(iter);

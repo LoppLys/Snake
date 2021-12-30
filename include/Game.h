@@ -19,7 +19,8 @@ namespace SpriteGame {
 		void gameOver();
 		bool outOfBounds();
 		void checkCollision(Sprite *);
-		void playSound();
+		void playSound(Mix_Chunk*, int);
+		
 	private:
 		std::vector<Sprite*> sprites;
 		Sprite* character;

@@ -14,12 +14,14 @@ namespace SpriteGame{
         ~System();
         SDL_Renderer* get_ren() const;
         TTF_Font* get_font() const;
-        Mix_Chunk* get_sound() const;
+        Mix_Chunk* get_backSound() const;
+        Mix_Chunk* get_soundEffect() const;
         private:
         SDL_Window* win;
         SDL_Renderer* ren;
         TTF_Font* font;
-        Mix_Chunk* sound;
+        Mix_Chunk* backSound;
+        Mix_Chunk* soundEffect;
 
 
     };
