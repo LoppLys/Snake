@@ -10,8 +10,8 @@ public:
     ~RedApple();
     void impact(Sprite *);
     void tick();
-    void draw();
-    //Impact on snake: Increase body by 1 unit
+    void draw(){};
+    
     
 private:
 

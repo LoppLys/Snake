@@ -15,10 +15,6 @@ namespace SpriteGame {
       
     }
 
-    void RottenApple::draw(){
-        Sprite::draw();
-    }
-
     void RottenApple::tick(){
         Powerup::tick();
     }

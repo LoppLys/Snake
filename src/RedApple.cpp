@@ -18,12 +18,6 @@ namespace SpriteGame {
         Powerup::tick();
     }
 
-    void RedApple::draw(){
-        Sprite::draw();
-    }
-
-  
-
     void RedApple::impact(Sprite *s){
         if(dynamic_cast<Snake*>(s)){
             ((Snake*) s)->setSpeed(2);

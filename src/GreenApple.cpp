@@ -15,9 +15,7 @@ namespace SpriteGame {
     
     }
 
-    void GreenApple::draw(){
-        Sprite::draw();
-    }
+
 
     void GreenApple::tick(){
         Powerup::tick();

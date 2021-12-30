@@ -9,11 +9,7 @@ namespace SpriteGame {
     Bomb::Bomb(int x, int y, int w, int h): Powerup(x,y,w,h, "./resources/images/bomb.png"){}
 
     Bomb::~Bomb(){}
-
-    void Bomb::draw(){
-        Sprite::draw();
-    }
-
+    
     void Bomb::tick(){
         Powerup::tick();
     }

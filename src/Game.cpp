@@ -101,7 +101,7 @@ namespace SpriteGame {
 
 	bool Game::outOfBounds(){
 		
-		if(character->getRect().x < -20 || character->getRect().x > 650 || character->getRect().y < -20 || character->getRect().y > 450){
+		if(character->getRect().x < -20 || character->getRect().x > 620 || character->getRect().y < -20 || character->getRect().y > 420){
 			return true;
 		} else
 			return false;
