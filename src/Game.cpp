@@ -50,7 +50,7 @@ namespace SpriteGame {
 				SDL_Delay(delay);
 			}
 			
-			SDL_SetRenderDrawColor(sys.get_ren(), 255, 200, 255, 255);
+			SDL_SetRenderDrawColor(sys.get_ren(), 200, 220, 150, 255);
 			SDL_RenderClear(sys.get_ren());
 			
 			for (Sprite* s : sprites){
