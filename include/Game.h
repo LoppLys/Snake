@@ -19,12 +19,14 @@ namespace SpriteGame {
 		void gameOver();
 		bool outOfBounds();
 		void checkCollision(Sprite *);
+		void playSound();
 	private:
 		std::vector<Sprite*> sprites;
 		Sprite* character;
 		SDL_Surface* txtSurface;
 		SDL_Texture * txtTexture;
 		const char* score;
+		
 	};
 }
 #endif

@@ -22,6 +22,7 @@ namespace SpriteGame {
 	}
 
 	void Game::run() {
+	playSound();
 	score = "Current score ";// + character->getSize();
     const int tickIntervall = 1000 /FPS;
     int delay;
@@ -89,6 +90,13 @@ namespace SpriteGame {
 		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &txtRect);
 		SDL_FreeSurface(txtSurface);
 		
+	}
+	void Game::playSound(){
+		int channel = Mix_PlayChannel(-1,sys.get_sound(),1);
+		if(channel == -1){
+			std::cout << "No sound" << std::endl;
+		}
+		Mix_Volume(channel,50);
 	}
 
 	bool Game::outOfBounds(){
