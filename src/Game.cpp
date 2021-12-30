@@ -8,19 +8,14 @@
 #include <vector>
 #include <algorithm>
 
-
-
-
-
 #define FPS 60
 
 namespace SpriteGame {
 
 	Game::Game(Sprite * c){
-		character = c; 
+		character = c; //setting initial sprite to become the main character of game
 		add(c);
 	}
-
 
     void Game::add(Sprite* c) {
 		sprites.push_back(c);
@@ -60,15 +55,10 @@ namespace SpriteGame {
 			for (Sprite* s : sprites){
 				s->draw();
 				s->tick();
-				if(character->getRect().x < 0 || character->getRect().x > 650 || character->getRect().y < 0 || character->getRect().y > 450){
-					//gameOver();
-					quit = true;}
-				if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
-					//std::cout << "COLLIDED" << std::endl;
-							character->collide(s);
-							auto iter = find(sprites.begin(), sprites.end(), s);
-							sprites.erase(iter);
+				if(outOfBounds()){
+					quit = true;
 				}
+				checkCollision(s);
 			}
 			
 			RenderText(score);
@@ -80,9 +70,7 @@ namespace SpriteGame {
 
 	}
 
-	Game::~Game()
-	{
-	}
+	Game::~Game(){}
 
 	void Game::Spawn(int nextTick, int delay){
 		if(nextTick%10 < 3 && delay%10 == 5 ){
@@ -102,6 +90,24 @@ namespace SpriteGame {
 		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &txtRect);
 		SDL_FreeSurface(txtSurface);
 		
+	}
+
+	bool Game::outOfBounds(){
+		bool outOfBounds = false;
+		if(character->getRect().x < 0 || character->getRect().x > 650 || character->getRect().y < 0 || character->getRect().y > 450){
+			//gameOver();
+			//quit = true;}
+			outOfBounds = true;
+		}
+		return outOfBounds;
+	}
+
+	void Game::checkCollision(Sprite * s){
+		if(character != s && SDL_HasIntersection(&character->getRect(), &s->getRect()) ){
+			character->collide(s);
+			auto iter = find(sprites.begin(), sprites.end(), s);
+			sprites.erase(iter);
+		}
 	}
 	
 	void Game::gameOver(){

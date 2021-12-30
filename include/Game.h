@@ -17,6 +17,8 @@ namespace SpriteGame {
 		void Spawn (int, int);
 		void RenderText(const char*);
 		void gameOver();
+		bool outOfBounds();
+		void checkCollision(Sprite *);
 	private:
 		std::vector<Sprite*> sprites;
 		Sprite* character;
