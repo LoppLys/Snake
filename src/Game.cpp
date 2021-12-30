@@ -53,7 +53,6 @@ namespace SpriteGame {
 			SDL_RenderClear(sys.get_ren());
 			
 			for (Sprite* s : sprites){
-				s->draw();
 				s->tick();
 				if(outOfBounds()){
 					quit = true;

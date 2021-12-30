@@ -3,17 +3,21 @@
         {
             "name": "Win64",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "F:/Skola/CPROG/msys64/mingw64/include",
+                "F:/Skola/CPROG/msys64/mingw64/include/SDL2"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "compilerPath": "F:/Skola/CPROG/msys64/mingw64/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64",
-            "compilerPath": "C:/Users/lollo/OneDrive/Dokument/my_SDL_C++/mingw64/bin/g++"
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

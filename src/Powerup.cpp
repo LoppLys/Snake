@@ -17,7 +17,7 @@ namespace SpriteGame {
     }
 
     void Powerup::tick(){
-        
+         Sprite::draw();
 		counter++;
 		if (getRect().x >= 600 || getRect().x < 0){
             removeSprite(this);
@@ -75,7 +75,4 @@ namespace SpriteGame {
         
     }
 
-    void Powerup::draw(){
-        Sprite::draw();
-    }
 }

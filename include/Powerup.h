@@ -20,7 +20,7 @@ public:
     //void move(int, int);
     void remove();
     virtual void impact(Sprite *){};
-    void draw();
+    void draw(){};
     virtual void collide(Sprite *){};
     ~Powerup();
     //virtual void setImageLocation(SDL_Surface* image){imageLocation = image;}
