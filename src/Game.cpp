@@ -63,7 +63,7 @@ namespace SpriteGame {
 			RenderText(score);
 			Spawn(nextTick,delay);
 			SDL_RenderPresent(sys.get_ren());
-			//SDL_DestroyTexture(txtTexture);
+			SDL_DestroyTexture(txtTexture);
 
 		} //yttre while
 
@@ -111,11 +111,4 @@ namespace SpriteGame {
 		
 	}
 
-	/*int indexOf(std::vector<Sprite*> vec, Sprite *s){
-		auto it = find(vec.begin(), vec.end(), s);
-    	if (it != vec.end()){
-        int index = it - vec.begin();
-        return index;
-	}
-*/
 }

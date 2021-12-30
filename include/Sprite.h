@@ -27,6 +27,7 @@ public:
     void setImage(std::string image){setSurface(IMG_Load(image.c_str()));}
     SDL_Texture* getTexture(){return texture;}
     void setTexture(SDL_Surface* new_surface){texture = SDL_CreateTextureFromSurface(sys.get_ren(), new_surface);}
+    const Sprite* operator=(Sprite*) = delete;
     
 
 private:
