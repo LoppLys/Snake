@@ -73,8 +73,8 @@ namespace SpriteGame {
 
 	void Game::Spawn(int nextTick, int delay){
 		if(nextTick%10 < 3 && delay%10 == 5 ){
-				int x = rand() % 300;
-				int y = rand() % 200;
+				int x = rand() % 600;
+				int y = rand() % 100;
 				int s = rand() % 5;
                 Powerup* p = nullptr;
                 sprites.push_back(p->add(x,y,s));
@@ -93,7 +93,7 @@ namespace SpriteGame {
 
 	bool Game::outOfBounds(){
 		bool outOfBounds = false;
-		if(character->getRect().x < 0 || character->getRect().x > 650 || character->getRect().y < 0 || character->getRect().y > 450){
+		if(character->getRect().x < -20 || character->getRect().x > 650 || character->getRect().y < -20 || character->getRect().y > 450){
 			//gameOver();
 			//quit = true;}
 			outOfBounds = true;
