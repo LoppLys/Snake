@@ -51,9 +51,8 @@ namespace SpriteGame {
 			if(delay > 0){
 				SDL_Delay(delay);
 			}
-			
-			SDL_SetRenderDrawColor(sys.get_ren(), 200, 220, 150, 255);
 			SDL_RenderClear(sys.get_ren());
+			renderBackground();
 			
 			for (Sprite* s : sprites){
 				s->tick();
@@ -69,9 +68,13 @@ namespace SpriteGame {
 				}
 			}
 			renderPoints(points);
-			spawn(nextTick,delay);
+			if(rand() % 70 == 2){
+				spawn();
+			}
+			
 			SDL_RenderPresent(sys.get_ren());
 			SDL_DestroyTexture(txtTexture);
+			SDL_DestroyTexture(backgroundTexture);
 
 		} //yttre while
 
@@ -79,21 +82,28 @@ namespace SpriteGame {
 
 	Game::~Game(){}
 
-	void Game::spawn(int nextTick, int delay){
-		if(nextTick%10 < 3 && delay%10 == 5 ){
-				int x = rand() % 600;
-				int y = rand() % 100;
-				int s = rand() % 5;
-                Powerup* p = nullptr;
-                sprites.push_back(p->add(x,y,s));
-    	}
+	void Game::renderBackground(){
+	backgroundSurface = IMG_Load("./resources/images/background.jpg");
+    backgroundTexture = SDL_CreateTextureFromSurface(sys.get_ren(), backgroundSurface); 
+	SDL_Rect backRect = {0,0,backgroundSurface->w, backgroundSurface->h };
+	SDL_RenderCopy(sys.get_ren(),backgroundTexture, NULL , &backRect);
+    SDL_FreeSurface(backgroundSurface);
+	}
+
+	void Game::spawn(){
+		int x = rand() % 300;
+		int y = rand() % 200;
+		int s = rand() % 5;
+        Powerup* p = nullptr;
+        sprites.push_back(p->add(x,y,s));
+    	
 	}
 
 	void Game::renderPoints(int points){
 		std::string pointsStr = "Score " + std::to_string(points);
-		SDL_Color black = { 0,0,0 };
+		SDL_Color color = { 255,255,255 };
 		txtSurface =
-			TTF_RenderText_Solid(sys.get_font(), pointsStr.c_str(), black);
+			TTF_RenderText_Solid(sys.get_font(), pointsStr.c_str(), color);
 		txtTexture = SDL_CreateTextureFromSurface(sys.get_ren(), txtSurface);
 		SDL_Rect pointsRect = { 450,10,txtSurface->w, txtSurface->h };
 		SDL_RenderCopy(sys.get_ren(),txtTexture, NULL , &pointsRect);
