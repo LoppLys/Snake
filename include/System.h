@@ -22,7 +22,8 @@ namespace SpriteGame{
         TTF_Font* font;
         Mix_Chunk* backSound;
         Mix_Chunk* soundEffect;
-
+        SDL_Surface* backgroundSurface;
+        SDL_Texture* backgroundTexture;
 
     };
 

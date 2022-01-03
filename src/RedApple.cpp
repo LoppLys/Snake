@@ -23,6 +23,7 @@ namespace SpriteGame {
             ((Snake*) s)->setSpeed(2);
             ((Snake*) s)->addBodyPart();
         }
+       
     }
   
 }

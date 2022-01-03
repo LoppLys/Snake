@@ -17,18 +17,15 @@ public:
     void keyLeft(){};
     void keyRight(){};
     void tick();
-    //void move(int, int);
     void remove();
     virtual void impact(Sprite *){};
     void draw(){};
     virtual int collide(Sprite *){return 0;};
     ~Powerup();
-    //virtual void setImageLocation(SDL_Surface* image){imageLocation = image;}
+
 
 private:
     int counter = 0;
-   // int popup_time;
-  // bool onScreen;
 
 };
 

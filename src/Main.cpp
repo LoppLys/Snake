@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     Sprite* character = new Snake(263,153,20,20);
     Game game(character);
     game.run();
-
+    game.gameOver();
 
     return 0;
 }

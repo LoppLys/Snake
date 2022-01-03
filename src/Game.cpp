@@ -57,10 +57,16 @@ namespace SpriteGame {
 			
 			for (Sprite* s : sprites){
 				s->tick();
+				
 				if(outOfBounds()){
 					quit = true;
 				}
 				checkCollision(s);
+				if(!s->IsActive()){
+					auto iter = find(sprites.begin(), sprites.end(), s);
+					sprites.erase(iter);
+					delete s;
+				}
 			}
 			renderPoints(points);
 			spawn(nextTick,delay);
@@ -115,8 +121,13 @@ namespace SpriteGame {
 			int i = character->collide(s);
 			auto iter = find(sprites.begin(), sprites.end(), s);
 			sprites.erase(iter);
+			delete s;
 			points += i;
 		}
+	}
+
+	void Game::gameOver(){
+		std::cout << "Your score " << points << std::endl;
 	}
 	
 

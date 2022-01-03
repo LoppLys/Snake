@@ -20,7 +20,7 @@ namespace SpriteGame {
          Sprite::draw();
 		counter++;
 		if (getRect().x >= 600 || getRect().x < 0){
-            this->~Powerup();
+            setActive();
         }
 		else if (counter % 10 == 0){
 

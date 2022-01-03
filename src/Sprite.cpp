@@ -14,10 +14,6 @@ namespace SpriteGame{
       SDL_FreeSurface(surface);
 	    SDL_DestroyTexture(texture);
     }
-    
-    void Sprite::removeSprite(Sprite* s){
-        
-    }
 
     void Sprite::draw(){
      SDL_RenderCopy(sys.get_ren(),texture, NULL, &getRect());

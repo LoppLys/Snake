@@ -19,7 +19,7 @@ namespace SpriteGame{
     soundEffect = Mix_LoadWAV("./resources/sounds/eating-sound-effect.wav");
     win = SDL_CreateWindow("SpriteGame",SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400,0);
     ren = SDL_CreateRenderer(win,-1,0);
-    
+    backgroundSurface = IMG_Load("./resources/images/background.jpg");
     
    
 
