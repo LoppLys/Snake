@@ -50,9 +50,4 @@ namespace SpriteGame {
     }
     
     
-
-    Powerup::~Powerup(){
-        Sprite::~Sprite();
-
-}
 }

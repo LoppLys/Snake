@@ -13,6 +13,7 @@ namespace SpriteGame{
     Sprite::~Sprite(){
       SDL_FreeSurface(surface);
 	    SDL_DestroyTexture(texture);
+      
     }
 
     void Sprite::draw(){

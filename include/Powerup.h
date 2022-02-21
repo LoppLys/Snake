@@ -21,7 +21,7 @@ public:
     virtual void impact(Sprite *){};
     void draw(){};
     virtual int collide(Sprite *){return 0;};
-    ~Powerup();
+    ~Powerup(){};
 
 
 private:

@@ -86,6 +86,7 @@ int Snake::collide(Sprite* s){
         if(dynamic_cast<RedApple*>(s)){
         return 1;
         }
+		
     }
     return 0;
 }

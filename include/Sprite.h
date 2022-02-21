@@ -27,6 +27,7 @@ public:
     void setSurface(SDL_Surface* this_surface){surface = this_surface;}
     SDL_Texture* getTexture(){return texture;}
     void setTexture(SDL_Surface* new_surface){texture = SDL_CreateTextureFromSurface(sys.get_ren(), new_surface);}
+    Sprite(const Sprite& other) = delete;
     const Sprite* operator=(Sprite*) = delete;
     
 
@@ -34,7 +35,6 @@ private:
     SDL_Rect rect; 
     SDL_Surface* surface; 
     SDL_Texture* texture = SDL_CreateTextureFromSurface(sys.get_ren(), surface);
-    Sprite(const Sprite&) = delete;
     bool Active = true;
     
 
